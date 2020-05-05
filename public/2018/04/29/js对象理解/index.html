@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-Hans" >
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="description" content="node前端" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    js对象理解 |  非黑非白の博客
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  <link rel="stylesheet" href="/dist/main.css">
+  <link rel="stylesheet" href="/css/custom.css">
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+  
+
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content on">
+      <section class="outer">
+  <article id="post-js对象理解" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  js对象理解
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2018/04/29/js对象理解/" class="article-date">
+  <time datetime="2018-04-29T06:52:23.000Z" itemprop="datePublished">2018-04-29</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JS学习笔记/">JS学习笔记</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> post.word_count:</span>
+            <span class="post-count">2.3k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> post.read_time≈</span>
+            <span class="post-count">8 post.minutes</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <script src="/assets/js/APlayer.min.js"> </script><p>[toc]</p>
+<h1 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h1><p>对象最常见的用法是创建（create）、设置（set）、查找（query）、删除（delete）、检测（test）和枚举（enumerate）它的属性。</p>
+<p> JavaScript 的「三类对象」和「两类属性」进行区分：</p>
+<p>内置对象（native object），是由 JavaScript 规范定义的对象或类。例如，数组、函数、日期和正则表达式都是内置对象。<br>宿主对象（host object），是由 JavaScript 解释器所嵌入的宿主环境（比如 Web 浏览器）定义的。客户端 JavaScript 中表示网页结构的 HTMLElement 对象均是宿主对象。<br>自定义对象（user-defined object），是由运行中的 JavaScript 代码创建的对象。</p>
+<p>自有属性（own property），是直接在对象中定义的属性。<br>继承属性（inherited property），是在对象的原型对象中定义的属性。<br><a id="more"></a></p>
+<h2 id="使用对象字面量创建对象（推荐）"><a href="#使用对象字面量创建对象（推荐）" class="headerlink" title="使用对象字面量创建对象（推荐）"></a>使用对象字面量创建对象（推荐）</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">// 推荐写法</span><br><span class="line">var person = &#123;</span><br><span class="line">    name : &quot;stone&quot;,</span><br><span class="line">    age : 28</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">// 也可以写成</span><br><span class="line">var person = &#123;&#125;;</span><br><span class="line">person.name = &quot;stone&quot;;</span><br><span class="line">person.age = 28;</span><br></pre></td></tr></table></figure>
+<h2 id="使用-new-关键字创建对象"><a href="#使用-new-关键字创建对象" class="headerlink" title="使用 new 关键字创建对象"></a>使用 <code>new</code> 关键字创建对象</h2><p><code>new</code> 关键字<code>创建并初始化</code>一个新对象。关键字 new 后跟随一个<code>函数调用</code>。<br>这里的函数称做构造函数（constructor），<code>构造函数用以初始化一个新创建的对象</code>。<br>JavaScript 语言核心中的原始类型都包含内置构造函数。例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var person = new Object();</span><br><span class="line">person.name = &quot;stone&quot;;</span><br><span class="line">person.age = 28;</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>只要在 <code>new</code> 后面跟随一个已创建的对象，就可以继承它的原型属性。 </li>
+</ul>
+<h2 id="使用-Object-create-函数创建对象"><a href="#使用-Object-create-函数创建对象" class="headerlink" title="使用 Object.create() 函数创建对象"></a>使用 <code>Object.create()</code> 函数创建对象</h2><p><code>Object.create()</code> 创建一个具有指定原型且可选择性地包含指定属性的对象。</p>
+<blockquote>
+<p>Object.create(prototype, descriptors)</p>
+</blockquote>
+<p>参数<br>prototype<br>必需。  要用作原型的对象。  可以为 null。<br>descriptors<br>可选。  包含一个或多个属性描述符的 JavaScript 对象。<br>“数据属性”是可获取且可设置值的属性。<br>数据属性描述符包含 value(值) 特性，以及 writable(可写)、enumerable（可枚举） 和 configurable（可配置） 特性。<br>如果未指定最后三个特性，则它们默认为 false。<br>只要检索或设置该值，“访问器属性”就会调用用户提供的函数。<br>访问器属性描述符包含 set 特性和/或 get 特性。</p>
+<p>下面的示例创建使用 null 原型的对象并添加两个可枚举的属性。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">var newObj = Object.create(null, &#123;</span><br><span class="line">            size: &#123;</span><br><span class="line">                value: &quot;large&quot;,</span><br><span class="line">                enumerable: true</span><br><span class="line">            &#125;,</span><br><span class="line">            shape: &#123;</span><br><span class="line">                value: &quot;round&quot;,</span><br><span class="line">                enumerable: true</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line"></span><br><span class="line">console.log(newObj.size + &quot;&lt;br/&gt;&quot;);</span><br><span class="line">console.log(newObj.shape + &quot;&lt;br/&gt;&quot;);</span><br><span class="line">console.log(Object.getPrototypeOf(newObj));</span><br><span class="line"></span><br><span class="line">// Object.getPrototypeOf 函数可获取原始对象的原型。</span><br><span class="line"></span><br><span class="line">// 输出(Output):</span><br><span class="line">// large</span><br><span class="line">// round</span><br><span class="line">// null</span><br></pre></td></tr></table></figure>
+<h2 id="原型（prototype）"><a href="#原型（prototype）" class="headerlink" title="原型（prototype）"></a>原型（prototype）</h2><p>所有通过对象字面量创建的对象都具有同一个原型对象，并可以通过 JavaScript 代码 Object.prototype 获得对原型对象的引用。<br>Object.prototype 是所有对象的原型对象，也是原型链终点，但是它默认是null的。<br>Object.prototype.<strong>proto</strong>为null （普通的对象）<br>Object.prototype 的存在价值就是象征Object类型本身,是根对象</p>
+<p>通过关键字 new 和构造函数调用创建的对象的原型就是构造函数的 prototype 属性的值。</p>
+<p>因此，同使用 {} 创建对象一样，通过 new Object() 创建的对象也继承自 Object.prototype。<br>同样，通过 new Array() 创建的对象的原型就是 Array.prototype，通过 new Date() 创建的对象的原型就是 Date.prototype。</p>
+<p>没有原型的对象为数不多，Object.prototype 就是其中之一。它不继承任何属性。<br>其他原型对象都是普通对象，普通对象都具有原型。</p>
+<p>所有的内置构造函数（以及大部分自定义的构造函数）都具有一个继承自 Object.prototype 的原型。<br>例如，Date.prototype 的属性继承自 Object.prototype，因此由 new Date() 创建的 Date 对象的属性同时继承自 Date.prototype 和 Object.prototype。</p>
+<p>这一系列链接的原型对象就是所谓的「原型链（prototype chain）」。</p>
+<h4 id="注意：只有函数才有显式原型属性（prototype），对象只有隐式原型（proto）属性"><a href="#注意：只有函数才有显式原型属性（prototype），对象只有隐式原型（proto）属性" class="headerlink" title="注意：只有函数才有显式原型属性（prototype），对象只有隐式原型（proto）属性"></a>注意：只有函数才有显式原型属性（prototype），对象只有隐式原型（<strong>proto</strong>）属性</h4><p>函数的prototype属性:在定义函数时自动添加的,默认值是一个空的Object对象<br>对象的<strong>proto</strong>属性:创建对象是自动创建、添加的,默认值为其对应构造函数的prototype属性值</p>
+<h2 id="属性的查询和设置"><a href="#属性的查询和设置" class="headerlink" title="属性的查询和设置"></a>属性的查询和设置</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//设置</span><br><span class="line">person.name = &quot;sophie&quot;; // 赋值</span><br><span class="line">//查询</span><br><span class="line">console.log(person.name);   // &quot;sophie&quot;</span><br></pre></td></tr></table></figure>
+<h2 id="属性的访问错误"><a href="#属性的访问错误" class="headerlink" title="属性的访问错误"></a>属性的访问错误</h2><p>查询一个不存在的属性并不会报错，如果不存在，则返回undefined</p>
+<h2 id="删除属性"><a href="#删除属性" class="headerlink" title="删除属性"></a>删除属性</h2><p>JavaScript 对象可以看做属性的集合，我们经常会检测集合中成员的所属关系（判断某个属性是否存在于某个对象中）。。可以通过 in 运算符、hasOwnPreperty() 和 propertyIsEnumerable() 来完成这个工作，甚至仅通过属性查询也可以做到这一点。</p>
+<p>in 运算符的左侧是属性名（字符串），右侧是对象。<br>如果对象的自有属性或继承属性中包含这个属性则返回 true。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var o = &#123; x: 1 &#125;</span><br><span class="line">console.log(&quot;x&quot; in o);          // true，x是o的属性</span><br><span class="line">console.log(&quot;y&quot; in o);          // false，y不是o的属性</span><br><span class="line">console.log(&quot;toString&quot; in o);   // true，toString是继承属性</span><br></pre></td></tr></table></figure>
+<p>除了使用 in 运算符之外，另一种更简便的方法是使用 !== 判断一个属性是否是 undefined</p>
+<p> <code>hasOwnProperty()</code> 方法用来检测给定的名字是否是对象的<code>自有属性</code>。<br>对于继承属性它将返回 false。</p>
+<p><code>propertyIsEnumerable()</code> 检测对象有<code>自有属性</code>且<code>可枚举性</code>为 true 时它才返回 true。</p>
+<h2 id="枚举属性"><a href="#枚举属性" class="headerlink" title="枚举属性"></a>枚举属性</h2><p>除了检测对象的属性是否存在，我们还会经常遍历对象的属性。通常使用 for-in 循环遍历，ECMAScript 5 提供了两个更好用的替代方案。</p>
+<p>for-in 循环可以在循环体中遍历对象中所有可枚举的属性（包括自有属性和继承的属性），把属性名称赋值给循环变量。<br>对象继承的内置方法不可枚举的，但在代码中给对象添加的属性都是可枚举的。例如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var o = &#123;x:1, y:2, z:3&#125;;            // 三个可枚举的自有属性</span><br><span class="line">o.propertyIsEnumerable(&quot;toString&quot;); // false，内置方法不可枚举</span><br><span class="line">for (p in o) &#123;          // 遍历属性</span><br><span class="line">    console.log(p);     // 输出x、y和z，不会输出toString</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>有许多实用工具库给 Object.prototype 添加了新的方法或属性，这些方法和属性可以被所有对象继承并使用。</p>
+<p>为了过滤继承的属性，我们可以对 for-in 进行改造<br>只许加入两个判断<br>hasOwnProperty()<br>这个方法可以用来检测一个对象是否含有特定的自身属性；和 in 运算符不同，该方法会忽略掉那些从原型链上继承到的属性。<br>typeof 判断对象类型<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">for(p in o) &#123;</span><br><span class="line">   if (!o.hasOwnProperty(p)) continue;          // 跳过继承的属性</span><br><span class="line">   if (typeof o[p] === &quot;function&quot;) continue;    // 跳过函数方法</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>除了 for-in 循环之外，ECMAScript 5 定义了两个用以枚举属性名称的函数。</p>
+<p>第一个是 Object.keys()，它返回一个数组，这个数组由对象中可枚举的自有属性的名称组成。</p>
+<p>第二个是 Object.getOwnPropertyNames()，它和 Ojbect.keys() 类似，只是它返回对象的所有自有属性的名称，而不仅仅是可枚举的属性。</p>
+<h2 id="属性的-getter-和-setter"><a href="#属性的-getter-和-setter" class="headerlink" title="属性的 getter 和 setter"></a>属性的 getter 和 setter</h2><p>由 getter 和 setter 定义的属性称做「存取器属性（accessor property）」<br>它不同于「数据属性（data property）」，数据属性只有一个简单的值。<br>并且和数据属性不同，存取器属性不具有可写性（writable attribute）。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">var o = &#123;</span><br><span class="line">    // 普通的数据属性</span><br><span class="line">    data_prop: value,</span><br><span class="line"></span><br><span class="line">    // 存取器属性都是成对定义的函数</span><br><span class="line">    get accessor_prop() &#123; /*这里是函数体 */ &#125;,</span><br><span class="line">    set accessor_prop(value) &#123; /* 这里是函数体*/ &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>存取器属性定义为一个或两个和属性同名的函数，这个函数定义没有使用 function 关键字，而是使用 get 或 set。<br>注意，这里没有使用冒号将属性名和函数体分隔开，但在函数体的结束和下一个方法或数据属性之间有逗号分隔。</p>
+<h2 id="序列化对象（JSON）"><a href="#序列化对象（JSON）" class="headerlink" title="序列化对象（JSON）"></a>序列化对象（JSON）</h2><p>对象序列化（serialization）是指将对象的状态转换为字符串，也可将字符串还原为对象。<br>JSON.stringify() 用于将 JavaScript 值转换为 JSON 字符串<br>JSON.parse() 用于将一个 JSON 字符串转换为对象。</p>
+<h2 id="关卡"><a href="#关卡" class="headerlink" title="关卡"></a>关卡</h2><p><a href="https://github.com/stone0090/javascript-lessons/blob/master/1.7-ObjectObjects/Answer.md" target="_blank" rel="noopener">枚举题</a></p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>创建对象的三种方式，在默认情况下，都一样。<br>但是在涉及原型的情况下 new 和 create() ，就产生了区别。至于字面量方法，则是无法继承原型。</p>
+<p><code>new</code> 关键字<code>创建并初始化</code>一个新对象。<br>关键字 <code>new</code> 后跟随一个<code>函数调用</code>，新对象会继承它的原型属性。</p>
+<p>工厂模式、构造函数模式、原型模式等……面向对象常用语法</p>
+<p><code>Object.create()</code> 创建一个具有<code>指定原型</code>且<code>可选择性地包含指定属性</code>的对象。</p>
+<p>new的高级应用？</p>
+
+      
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        post.reward
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>post.copyright_title： </strong>
+              post.copyright_content
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://blak-kong.github.io/2018/04/29/js对象理解/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/对象-js/">对象 js</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2018/04/29/js数组方法/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            js数组方法
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2018/04/29/函数内部的特殊对象/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">函数内部的特殊对象</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: '6uPG1LfUnKuMQTJj9n4beJeN-gzGzoHsz',
+        app_key: 'hIBECVGKuO5cLFYHcjVpzQWr',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'mp',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2018-2020
+        blak-kong
+      </li>
+      <li>
+        
+        Powered by
+        
+        
+        <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+        
+      </li>
+      
+      <li>
+        <a href="http://www.beian.miit.gov.cn/" target="_black">粤ICP备19140350号</a>
+      </li>
+      
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s4.cnzz.com/z_stat.php?id=1278748687&amp;web_id=1278748687'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="非黑非白の博客"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/2019/about">关于我</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="search">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="rss_feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>~~~~~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['天下古今之庸人，皆以一惰字致败；天下古今之人才，皆以一傲字致败。', '编程不同于码字，码字用心，编程用逻辑。', '有压力的时候，就要超越当下，观想「白骨观」'],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+  }
+
+</script>
+
+
+
+<script src="/js/tocbot.min.js"></script>
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+<script src="/dist/main.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+
+
+    
+  </div>
+</body>
+
+</html>
