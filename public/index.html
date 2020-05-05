@@ -73,6 +73,268 @@
     
     
     
+    <article id="post-【HTML】参考博客" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/05/【HTML】参考博客/"
+    >【HTML】参考博客</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/05/【HTML】参考博客/" class="article-date">
+  <time datetime="2020-05-05T13:10:39.000Z" itemprop="datePublished">2020-05-05</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <script src="/assets/js/APlayer.min.js"> </script><p>[toc]</p>
+<h2 id="一、-网页排版"><a href="#一、-网页排版" class="headerlink" title="一、 网页排版"></a>一、 网页排版</h2><p>排版标签：</p>
+<ul>
+<li><p><code>&lt;h1&gt;</code></p>
+</li>
+<li><p><code>&lt;p&gt;</code></p>
+</li>
+<li><p><code>&lt;hr /&gt;</code> 水平分割线标签</p>
+</li>
+<li><p><code>&lt;br /&gt;</code> 换行标签</p>
+</li>
+<li><p><code>&lt;div&gt;</code></p>
+</li>
+<li><p><code>&lt;span&gt;</code></p>
+</li>
+<li><p><code>&lt;pre&gt;</code> 预定义标签：原样输出内容</p>
+</li>
+</ul>
+<p>原文地址： <a href="https://github.com/qianguyihao/Web/blob/master/01-HTML/04-HTML%E6%A0%87%E7%AD%BE%EF%BC%9A%E6%8E%92%E7%89%88%E6%A0%87%E7%AD%BE.md" target="_blank" rel="noopener">HTML 标签：排版标签</a></p>
+<h2 id="二、字体与锚点链接"><a href="#二、字体与锚点链接" class="headerlink" title="二、字体与锚点链接"></a>二、字体与锚点链接</h2><p>个人简要笔记：</p>
+<h3 id="2-1-字体"><a href="#2-1-字体" class="headerlink" title="2-1.字体"></a>2-1.字体</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// b s u i 都是已经废弃的，现在用左边更语义化的标签</span><br><span class="line">strong == b // strong 粗体标签 语义: 定义重要性强调的文字</span><br><span class="line">del == s // del 中划线/删除线 语义(deleted): 定义被删除的文字</span><br><span class="line">ins == u // ins 下划线 语义(inseted): 定义插入的文字</span><br><span class="line">em == i // em 斜体 语义(emphasized): 定义强调的文字</span><br></pre></td></tr></table></figure>
+<h3 id="2-2-锚点链接"><a href="#2-2-锚点链接" class="headerlink" title="2-2.锚点链接"></a>2-2.锚点链接</h3><p>锚点链接即是通过给元素设置 id（设置标记），实现浏览器可以在链接访问网页的时候，在根据链接地址后面的<code>#id</code>参数，来自动定位到网页文档的对应位置。</p>
+<blockquote>
+<p>锚链接的作用是在本页面或者其他页面的的不同位置进行跳转。</p>
+</blockquote>
+<p>比如说，在网页底部有一个向上箭头，点击箭头后回到顶部，这个就可以利用锚链接。</p>
+<p>不过锚链接没有动画，是立即跳转到对应位置。所以实际使用中，往往需要依赖别人封装好的插件。</p>
+<p>例如<code>navScroll.ja</code></p>
+<p>参考原文地址： <a href="https://github.com/qianguyihao/Web/blob/master/01-HTML/05-HTML%E6%A0%87%E7%AD%BE%EF%BC%9A%E5%AD%97%E4%BD%93%E6%A0%87%E7%AD%BE%E5%92%8C%E8%B6%85%E9%93%BE%E6%8E%A5.md" target="_blank" rel="noopener">HTML 标签：字体标签和超链接</a></p>
+<h2 id="三、图片标签"><a href="#三、图片标签" class="headerlink" title="三、图片标签"></a>三、图片标签</h2><p>主要注意 align 属性</p>
+<p>图片的 align 属性：图片和周围文字的相对位置。</p>
+<p>属性取值可以是：bottom（默认）、center、top、left、right。</p>
+<p>如果想实现图文混排的效果，请使用 align 属性，取值为 left 或 right。</p>
+<p>我们来分别看一下这 align 属性的这几个属性值的区别。</p>
+<p>1、align=””，图片和文字低端对齐。即默认情况下的显示效果</p>
+<p>2、align=”center”：图片和文字水平方向上居中对齐。 3、align=”top”：图片与文字顶端对齐。</p>
+<p>4、align=”left”：图片在文字的左边。</p>
+<p>5、align=”right”：图片在文字的右边。</p>
+<p>原文地址： <a href="https://github.com/qianguyihao/Web/blob/master/01-HTML/06-HTML%E6%A0%87%E7%AD%BE%EF%BC%9A%E5%9B%BE%E7%89%87%E6%A0%87%E7%AD%BE.md" target="_blank" rel="noopener">HTML 标签：图片标签</a></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/他人博客/">他人博客</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网页排版/">网页排版</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-【HEXO】hexo部署到阿里云" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/05/【HEXO】hexo部署到阿里云/"
+    >【HEXO】hexo部署到阿里云</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/05/【HEXO】hexo部署到阿里云/" class="article-date">
+  <time datetime="2020-05-05T13:02:54.000Z" itemprop="datePublished">2020-05-05</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <script src="/assets/js/APlayer.min.js"> </script><p>从零搭建 Hexo 博客并部署阿里云服务器（奶妈级教学）_运维_Object 的博客-CSDN 博客 <a href="https://blog.csdn.net/NoCortY/article/details/99631249" target="_blank" rel="noopener">https://blog.csdn.net/NoCortY/article/details/99631249</a></p>
+<p>有一个修改文件权限的坑，不了解 linux，卡了几小时。</p>
+<p>如果遇到了，参考下面这篇文章，chmod 这一步改成 777 即可</p>
+<p>chmod 修改文件权限 777 和 754_运维_pythonw 的博客-CSDN 博客 <a href="https://blog.csdn.net/pythonw/article/details/80263428" target="_blank" rel="noopener">https://blog.csdn.net/pythonw/article/details/80263428</a></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-【HTTPS】阿里云配置https" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/05/【HTTPS】阿里云配置https/"
+    >【HTTPS】记一次阿里云配置https</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/05/【HTTPS】阿里云配置https/" class="article-date">
+  <time datetime="2020-05-05T13:02:03.000Z" itemprop="datePublished">2020-05-05</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/云服务器/">云服务器</a>
+  </div>
+
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <script src="/assets/js/APlayer.min.js"> </script><p>[TOC]</p>
+<p>给阿里云配置 https 很简单，只需要申请证书、然后安装到云服务器内的 web 服务器中，配置一下即可。</p>
+<p>阿里云有官方案例，这里选择 nginx</p>
+<p><a href="https://help.aliyun.com/document_detail/98728.html?spm=a2c4g.11186623.6.587.84fd392cMbk2oO" target="_blank" rel="noopener">https://help.aliyun.com/document_detail/98728.html?spm=a2c4g.11186623.6.587.84fd392cMbk2oO</a></p>
+<h2 id="nginx-安装步骤"><a href="#nginx-安装步骤" class="headerlink" title="nginx 安装步骤"></a>nginx 安装步骤</h2><p>我的 nginx 是使用 yum 安装的，所以安装目录在<code>/etc/nginx</code></p>
+<blockquote>
+<p>yum install -y nginx</p>
+</blockquote>
+<p>强烈推荐使用这种方式安装，非常方便</p>
+<h3 id="第一步：上传密钥到-nginx-目录下"><a href="#第一步：上传密钥到-nginx-目录下" class="headerlink" title="第一步：上传密钥到 nginx 目录下"></a>第一步：上传密钥到 nginx 目录下</h3><p>在 nginx 目录下运行</p>
+<blockquote>
+<p>mkdir cert</p>
+</blockquote>
+<p>创建密钥文件夹，把密钥文件都上传到该文件夹下。</p>
+<h3 id="第二步：配置-nginx"><a href="#第二步：配置-nginx" class="headerlink" title="第二步：配置 nginx"></a>第二步：配置 nginx</h3><p>我们使用 nginx 不应该任何时候都直接改动 <code>nginx.conf</code>，这里我有一个<code>vhost/blog.conf</code>的文件夹，里面配置了一个代理的网站。参考配置</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">  <span class="attribute">listen</span> <span class="number">80</span>;</span><br><span class="line">  <span class="attribute">root</span> /home/www/blog-website;</span><br><span class="line">  <span class="attribute">server_name</span> www.lzwlook.fun lzwlook.fun;</span><br><span class="line">  <span class="attribute">rewrite</span><span class="regexp"> ^/(.*)$</span> https://www.lzwlook.fun/<span class="variable">$1</span> <span class="literal">permanent</span>;</span><br><span class="line">  <span class="attribute">location</span> / &#123;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="section">server</span> &#123;</span><br><span class="line">  <span class="attribute">listen</span> <span class="number">443</span> ssl;</span><br><span class="line">  <span class="attribute">root</span> /home/www/blog-website;</span><br><span class="line">  <span class="attribute">server_name</span> www.lzwlook.fun lzwlook.fun;</span><br><span class="line"></span><br><span class="line">  <span class="attribute">ssl_certificate</span> /etc/nginx/cert/3847437_www.lzwlook.fun.pem;</span><br><span class="line">  <span class="attribute">ssl_certificate_key</span> /etc/nginx/cert/3847437_www.lzwlook.fun.key;</span><br><span class="line">  <span class="attribute">ssl_session_cache</span> shared:SSL:<span class="number">1m</span>;</span><br><span class="line">  <span class="attribute">ssl_session_timeout</span>  <span class="number">10m</span>;</span><br><span class="line">  <span class="attribute">ssl_ciphers</span> ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4;  <span class="comment">#使用此加密套件。</span></span><br><span class="line">  <span class="attribute">ssl_protocols</span> TLSv1 TLSv1.<span class="number">1</span> TLSv1.<span class="number">2</span>;   <span class="comment">#使用该协议进行配置。</span></span><br><span class="line">  <span class="attribute">ssl_prefer_server_ciphers</span> <span class="literal">on</span>;</span><br><span class="line">  <span class="attribute">location</span> / &#123;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="三、重启-nginx"><a href="#三、重启-nginx" class="headerlink" title="三、重启 nginx"></a>三、重启 nginx</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nginx -s reload</span><br></pre></td></tr></table></figure>
+<h3 id="补充：使用-include-管理项目"><a href="#补充：使用-include-管理项目" class="headerlink" title="补充：使用 include 管理项目"></a>补充：使用 include 管理项目</h3><p>目前对于 nginx 不够了解，仅仅是文抄公。</p>
+<p>这里再补一下，创建 vhost 文件夹后，nginx 中怎么生效。</p>
+<p>我们还需要在 nginx.conf 中通过<code>include</code>，进行引入</p>
+<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">http</span> &#123;</span><br><span class="line">    <span class="attribute">include</span> /etc/nginx/conf.d/<span class="regexp">*.conf</span>; <span class="comment"># 这个是自带的</span></span><br><span class="line">    <span class="attribute">include</span> /etc/nginx/vhost/<span class="regexp">*.conf</span>; <span class="comment"># 这是我们的配置</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>在 nginx.conf 文件中使用 include 引入文件夹和配置，会让项目的管理方便很多，这样只要给每个新增项目建一个 <code>\*\*.conf</code> 文件就好了。</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/https/">https</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-test" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -585,234 +847,6 @@
 
 </article>
     
-    <article id="post-vue自定义指定" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2018/05/01/vue自定义指定/"
-    >vue自定义指定</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2018/05/01/vue自定义指定/" class="article-date">
-  <time datetime="2018-05-01T14:31:39.000Z" itemprop="datePublished">2018-05-01</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/vue/">vue</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>[TOC]</p>
-<h1 id="自定义属性"><a href="#自定义属性" class="headerlink" title="自定义属性"></a>自定义属性</h1><p>/**</p>
-<ul>
-<li>自定义全局指令</li>
-<li>注：使用指令时必须在指名名称前加前缀v-，即v-指令名称<br>*/</li>
-</ul>
-      
-      <a class="article-more-link" href="/2018/05/01/vue自定义指定/">阅读更多...</a>
-      
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-vue的实例属性和方法" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2018/05/01/vue的实例属性和方法/"
-    >vue的实例属性和方法</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2018/05/01/vue的实例属性和方法/" class="article-date">
-  <time datetime="2018-05-01T14:31:14.000Z" itemprop="datePublished">2018-05-01</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/前端-vue/">前端 vue</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>[TOC]</p>
-<h1 id="vue实例的属性和方法"><a href="#vue实例的属性和方法" class="headerlink" title="vue实例的属性和方法"></a>vue实例的属性和方法</h1><p>仅记录部分<br>大部分时候是随学随用，但是学到了就来记录。</p>
-<blockquote>
-<p>实例属性和方法 == 组件实例和方法 != 全局属性和方法</p>
-</blockquote>
-<ul>
-<li>另外，在组件实例的<code>methods方法</code>中不能使用全局Vue方法</li>
-</ul>
-      
-      <a class="article-more-link" href="/2018/05/01/vue的实例属性和方法/">阅读更多...</a>
-      
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue实例属性-计算属性/">vue实例属性 计算属性</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-vue生命周期和计算属性" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2018/05/01/vue生命周期和计算属性/"
-    >vue生命周期和计算属性</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2018/05/01/vue生命周期和计算属性/" class="article-date">
-  <time datetime="2018-05-01T14:30:52.000Z" itemprop="datePublished">2018-05-01</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/前端-vue/">前端 vue</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h1 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h1><h2 id="vue有八个生命周期，但只有两个是常用的"><a href="#vue有八个生命周期，但只有两个是常用的" class="headerlink" title="vue有八个生命周期，但只有两个是常用的"></a>vue有八个生命周期，但只有两个是常用的</h2><p>新手阶段只需要掌握created()和mounted()即可</p>
-      
-      <a class="article-more-link" href="/2018/05/01/vue生命周期和计算属性/">阅读更多...</a>
-      
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/生命周期-计算属性/">生命周期 计算属性</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
   </article>
   
 
@@ -904,7 +938,7 @@
     </li>
     
     <li class="nav-item">
-      <a class="nav-item-link" href="/2019/about">关于我</a>
+      <a class="nav-item-link" href="https://github.com/blak-kong">关于我</a>
     </li>
     
   </ul>

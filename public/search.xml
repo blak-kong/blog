@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[【HTML】参考博客]]></title>
+    <url>%2F2020%2F05%2F05%2F%E3%80%90HTML%E3%80%91%E5%8F%82%E8%80%83%E5%8D%9A%E5%AE%A2%2F</url>
+    <content type="text"><![CDATA[[toc] 一、 网页排版排版标签： &lt;h1&gt; &lt;p&gt; &lt;hr /&gt; 水平分割线标签 &lt;br /&gt; 换行标签 &lt;div&gt; &lt;span&gt; &lt;pre&gt; 预定义标签：原样输出内容 原文地址： HTML 标签：排版标签 二、字体与锚点链接个人简要笔记： 2-1.字体12345// b s u i 都是已经废弃的，现在用左边更语义化的标签strong == b // strong 粗体标签 语义: 定义重要性强调的文字del == s // del 中划线/删除线 语义(deleted): 定义被删除的文字ins == u // ins 下划线 语义(inseted): 定义插入的文字em == i // em 斜体 语义(emphasized): 定义强调的文字 2-2.锚点链接锚点链接即是通过给元素设置 id（设置标记），实现浏览器可以在链接访问网页的时候，在根据链接地址后面的#id参数，来自动定位到网页文档的对应位置。 锚链接的作用是在本页面或者其他页面的的不同位置进行跳转。 比如说，在网页底部有一个向上箭头，点击箭头后回到顶部，这个就可以利用锚链接。 不过锚链接没有动画，是立即跳转到对应位置。所以实际使用中，往往需要依赖别人封装好的插件。 例如navScroll.ja 参考原文地址： HTML 标签：字体标签和超链接 三、图片标签主要注意 align 属性 图片的 align 属性：图片和周围文字的相对位置。 属性取值可以是：bottom（默认）、center、top、left、right。 如果想实现图文混排的效果，请使用 align 属性，取值为 left 或 right。 我们来分别看一下这 align 属性的这几个属性值的区别。 1、align=””，图片和文字低端对齐。即默认情况下的显示效果 2、align=”center”：图片和文字水平方向上居中对齐。 3、align=”top”：图片与文字顶端对齐。 4、align=”left”：图片在文字的左边。 5、align=”right”：图片在文字的右边。 原文地址： HTML 标签：图片标签]]></content>
+      <tags>
+        <tag>html</tag>
+        <tag>网页排版</tag>
+        <tag>他人博客</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[【HEXO】hexo部署到阿里云]]></title>
+    <url>%2F2020%2F05%2F05%2F%E3%80%90HEXO%E3%80%91hexo%E9%83%A8%E7%BD%B2%E5%88%B0%E9%98%BF%E9%87%8C%E4%BA%91%2F</url>
+    <content type="text"><![CDATA[从零搭建 Hexo 博客并部署阿里云服务器（奶妈级教学）_运维_Object 的博客-CSDN 博客 https://blog.csdn.net/NoCortY/article/details/99631249 有一个修改文件权限的坑，不了解 linux，卡了几小时。 如果遇到了，参考下面这篇文章，chmod 这一步改成 777 即可 chmod 修改文件权限 777 和 754_运维_pythonw 的博客-CSDN 博客 https://blog.csdn.net/pythonw/article/details/80263428]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[【HTTPS】记一次阿里云配置https]]></title>
+    <url>%2F2020%2F05%2F05%2F%E3%80%90HTTPS%E3%80%91%E9%98%BF%E9%87%8C%E4%BA%91%E9%85%8D%E7%BD%AEhttps%2F</url>
+    <content type="text"><![CDATA[[TOC] 给阿里云配置 https 很简单，只需要申请证书、然后安装到云服务器内的 web 服务器中，配置一下即可。 阿里云有官方案例，这里选择 nginx https://help.aliyun.com/document_detail/98728.html?spm=a2c4g.11186623.6.587.84fd392cMbk2oO nginx 安装步骤我的 nginx 是使用 yum 安装的，所以安装目录在/etc/nginx yum install -y nginx 强烈推荐使用这种方式安装，非常方便 第一步：上传密钥到 nginx 目录下在 nginx 目录下运行 mkdir cert 创建密钥文件夹，把密钥文件都上传到该文件夹下。 第二步：配置 nginx我们使用 nginx 不应该任何时候都直接改动 nginx.conf，这里我有一个vhost/blog.conf的文件夹，里面配置了一个代理的网站。参考配置 1234567891011121314151617181920212223server &#123; listen 80; root /home/www/blog-website; server_name www.lzwlook.fun lzwlook.fun; rewrite ^/(.*)$ https://www.lzwlook.fun/$1 permanent; location / &#123; &#125;&#125;server &#123; listen 443 ssl; root /home/www/blog-website; server_name www.lzwlook.fun lzwlook.fun; ssl_certificate /etc/nginx/cert/3847437_www.lzwlook.fun.pem; ssl_certificate_key /etc/nginx/cert/3847437_www.lzwlook.fun.key; ssl_session_cache shared:SSL:1m; ssl_session_timeout 10m; ssl_ciphers ECDHE-RSA-AES128-GCM-SHA256:ECDHE:ECDH:AES:HIGH:!NULL:!aNULL:!MD5:!ADH:!RC4; #使用此加密套件。 ssl_protocols TLSv1 TLSv1.1 TLSv1.2; #使用该协议进行配置。 ssl_prefer_server_ciphers on; location / &#123; &#125;&#125; 三、重启 nginx1nginx -s reload 补充：使用 include 管理项目目前对于 nginx 不够了解，仅仅是文抄公。 这里再补一下，创建 vhost 文件夹后，nginx 中怎么生效。 我们还需要在 nginx.conf 中通过include，进行引入 1234http &#123; include /etc/nginx/conf.d/*.conf; # 这个是自带的 include /etc/nginx/vhost/*.conf; # 这是我们的配置&#125; 在 nginx.conf 文件中使用 include 引入文件夹和配置，会让项目的管理方便很多，这样只要给每个新增项目建一个 \*\*.conf 文件就好了。]]></content>
+      <categories>
+        <category>云服务器</category>
+      </categories>
+      <tags>
+        <tag>https</tag>
+        <tag>nginx</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[test]]></title>
     <url>%2F2020%2F04%2F15%2Ftest%2F</url>
     <content type="text"><![CDATA[]]></content>
@@ -215,44 +242,6 @@
       </categories>
       <tags>
         <tag>ES6</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[webpack从零开始构建项目之rem问题（三）]]></title>
-    <url>%2F2018%2F04%2F11%2Fwebpack%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E9%A1%B9%E7%9B%AE%EF%BC%88%E4%B8%89%EF%BC%89rem%E9%97%AE%E9%A2%98%2F</url>
-    <content type="text"><![CDATA[[TOC] 使用webpack解决px转rem的自适应问题现在的项目配置已经可以正常运行接下来我们要考虑下一个问题，由于VUE主要适用于移动端，所以我们需要一个自适应方案由于这是一个大众需求的刚需方案，所以我们大可不必自己手动去写JS代码，重复造轮子 那么我们要如何解决这个问题呢？ 和前面使用过的各种loader一样，我们可以通过装载一个loader来实现功能 然后只是装载还不行，因为要使用到VUE里，我们还需要手动配置一下。所以现在去VUE的官方文档查询→生产环境配置，找到VUE在webpack如何设置预处理器（px转rem也属于CSS预处理） 然后了解大概语法后，我们就可以在Npmjs.com搜索与Px、rem相关的loader 本次教程使用的是px2rem-loader在配置文件中修改以下代码 { test: /\.vue$/, loader: &apos;vue-loader&apos;, options:{ loaders:{ css: &apos;vue-style-loader!css-loader!px2rem-loader?remUnit=75&amp;remPrecision=8&apos;, scss: &apos;vue-style-loader!css-loader!px2rem-loader?remUnit=75&amp;remPrecision=8!sass-loader&apos; } } } 效果图： 然后我们重新启动webpack-dev-server,打开网页，刷新页面看一下，元素的px是否已经转化成rem上面的代码中，你可能会有不懂的地方，但我不会直接写出来告诉你请自行前往npm搜索到对应插件，然后进入开源作者的github中查询，动手加深记忆]]></content>
-      <categories>
-        <category>webpack</category>
-        <category>rem</category>
-      </categories>
-      <tags>
-        <tag>webpack</tag>
-        <tag>前端构建工具</tag>
-        <tag>rem</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[webpck从零开始构建项目之vue模板配置（二）]]></title>
-    <url>%2F2018%2F04%2F11%2Fwebpck%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E9%A1%B9%E7%9B%AE%EF%BC%88%E4%BA%8C%EF%BC%89%2F</url>
-    <content type="text"><![CDATA[VUE页面成功访问现在，为了解决服务端启动，但页面没有内容的问题我们在配置文件中第二行引入webpack的打包插件 const HtmlWebpackPlugin = require(‘html-webpack-plugin’);const CleanWebpackPlugin = require(‘clean-webpack-plugin’); html-webpack-plugin：HTML生成插件。 它会自动帮你生成一个 html 文件，并且引用相关的 assets 文件(如 css, js) clean-webpack-plugin：清理插件。 它会在在每次构建项目前，清理 /dist 文件夹 由于它们不是Node的内置方法，引入后，需要使用Npm安装对应插件 npm install html-webpack-plugin clean-webpack-plugin -D 介绍了插件，那就并且引入了项目，接下来自然就是使用了在配置文件的四大基础配置项之插件项 plugins 中引入 plugins: [ + new CleanWebpackPlugin([&apos;dist&apos;]), new HtmlWebpackPlugin({ title: &apos;Output Management&apos; }) ], title是新建的HTML的标题，一切变得很容易理解了吧？ 但要是就这样运行，还是没有什么卵用这只是用于理解的官网示例代码。 不设置输入输出，你设置tltle也没什么用呐~ 于是我们需要引入一个html文件，实际进行测试 plugins: [ new CleanWebpackPlugin([&apos;dist&apos;]), new HtmlWebpackPlugin({ template:&apos;./app/views/index.html&apos; }) ], html代码： &lt;html lang=&quot;en&quot;&gt; &lt;head&gt; &lt;meta charset=&quot;UTF-8&quot;&gt; &lt;title&gt;自定义模板&lt;/title&gt; &lt;/head&gt; &lt;body&gt; &lt;div id=&quot;app&quot;&gt;&lt;/div&gt; &lt;/body&gt; &lt;/html&gt; 即便如此，当你实际运行，你会发现还是没什么效果，顶多title变了，还是会报错 但你会发现，报错来自VUE Cannot find module ‘vue-template-compiler’（找不到模块Vue的模板编译器） 这时候我们会百度，或者到vue官方文档 然后我们得到解决办法：这个问题很简单，没有编译器，安装就行了npm install vue-template-compiler --save-dev 然后再次执行 webpack-dev-server --open 查看效果 我们发现还是有BUG： You are using the runtime-only build of Vue where the template compiler is not available. Either pre-compile the templates into render functions, or use the compiler-included build. 看起来很长，但是工整的报错最不用怕，我们在插件 plugins下面插入以下代码 resolve: { alias: { &apos;vue$&apos;: &apos;vue/dist/vue.esm.js&apos; } }, 最终效果： 最后还有一个BUG，关于SCSS样式问题，浏览器可能会报错这个时候根据报错提示npm安装node-sass就行 因为这个系列是从踩坑入门，所以对于处理报错，学到这里的同学应该也比较熟练了。]]></content>
-      <categories>
-        <category>webpack</category>
-      </categories>
-      <tags>
-        <tag>webpack</tag>
-        <tag>前端构建工具</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title><![CDATA[webpack从零开始构建项目之启动配置（一）]]></title>
-    <url>%2F2018%2F04%2F11%2Fwebpack%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E9%A1%B9%E7%9B%AE%EF%BC%88%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E6%94%B9BUG%EF%BC%89%2F</url>
-    <content type="text"><![CDATA[[TOC] webpack学习：构建工具详解建议结合官方文档查看此系列#手动搭建一个项目 项目准备 创建目录 初始化 npm init → 创建package.json 创建业务目录 app -&gt; js -&gt; main,APP.vue app -&gt; css -&gt; reset.scss app -&gt; views -&gt; index.html 注意：本系列博客使用的版本是webpack3.10.0，“vue”: “^2.5.16”，“vue-router”: “^3.0.1”，“webpack-dev-server”: “^2.9.5” 再补上一个目录结构 这里出了一个错，views文件夹要放到js文件夹里 创建配置文件 创建配置文件 webpack.config.js 文件配置 基础配置 ： entry（入口）—— module（模块）——plugins（插件）—— output（输出） 进阶配置： resolve（解析器）——devtool（开发工具）——devServer（开发服务器） 在webpack.config.js输入以下代码，设置基础模块、以及输入输出打包功能 // 当成模块输出 module.exports = { // 入口 entry: { app: &apos;./app/js/main.js&apos; }, // 开发服务器 devServer: { // 静态文件打包出口 contentBase: path.join(__dirname, &quot;dist&quot;), // 启用gzip 压缩 compress: true, // 端口 port: 9000 }, // 模块 module: { loaders: [{ test: /\.html$/, loader: &apos;html-loader&apos; }, { test: /\.vue$/, loader: &apos;vue-loader&apos; }, { test: /\.scss$/, loader: &apos;style-loader!css-loader!sass-loader&apos; }] }, // 插件 plugins: [], // 输出 output: { // 打包后的输出的文件名 filename: &apos;[name].min.js&apos;, // 打包后的文件存放的地方 path: path.resolve(__dirname, &apos;dist&apos;) } }` 进阶配置-网络配置devServer 根据需要设置 设置配置时，如有疑问， 官方文档查询最为快捷 devServer: { contentBase: path.join(__dirname, &quot;dist&quot;), // 静态文件输出地址 compress: true, // 一切服务都启用gzip 压缩 port: 9000 // 端口号 } // 把上面的代码加入以下代码后面 module.exports = { entry: { app: &apos;./app/js/main.js&apos; }, 这之后，执行命令 npm install webpack-dev-server --save-dev 安装本地网络服务 webpack-dev-server 为你提供了一个服务器和实时重载（live reloading） 功能。 然后使用Npm继续安装module下,loaders里面的Loader。 npm install html-loader vue-loader style-loader css-loader sass-loader -D 启动的代码配置VUE是组件化的框架，所以首先要到组件的文件夹，创建用于显示的组件。在home文件夹的index.vue中输入代码 &lt;template&gt; &lt;div class=&quot;home&quot;&gt; &lt;h1&gt;home&lt;/h1&gt; &lt;/div&gt; &lt;/template&gt; &lt;script&gt; export default { } &lt;/script&gt; &lt;style lang=&quot;scss&quot;&gt; .home{ color:blue; font-size: 80px; } &lt;/style&gt; 然后为了显示组件，我们需要设置路由，把组件绑定到主页。来到router目录，找到index.js文件，输入以下代码 import Vue from &quot;vue&quot;; import Router from &quot;vue-router&quot;; import Home from &quot;../home/index.vue&quot;; Vue.use(Router); export default new Router({ routes:[{ path:&apos;/&apos;, name:&apos;home&apos;, component:Home }] }) 此时组件已经绑定到了主页，但我们还没有编写vue的真正主页，App.vue的代码所以我们需要到App.vue编写代码 &lt;template&gt; &lt;div id=&quot;app&quot;&gt; &lt;router-view&gt;&lt;/router-view&gt; // 路由中绑定的页面 &lt;/div&gt; &lt;/template&gt; &lt;script&gt; export default { name: &quot;app&quot; } &lt;/script&gt; &lt;style lang=&quot;scss&quot;&gt; &lt;/style&gt; 那么这个时候我们是不是就可以启动页面了呢？ 答案是否定的。 由于是手动创建配置文件，其实目前为止，我们并没有在项目文件夹里面安装vue和vue-router，webpack也没有安装。 所以我们还需要执行npm install vue vue-router 和 npm install webpack -D 然后 再配置一下入口的mian.js import Vue from &quot;vue&quot; import App from &quot;./App.vue&quot; import router from &quot;./router&quot; Vue.config.productionTip = false /* eslint-disable no-new */ new Vue({ el: &quot;#app&quot;, router, components: { App }, template: &quot;&lt;App/&gt;&quot;, }) /* eslint-enable no-new */ 因为我们刚才安装了本地网络服务，所以可以输入根据官方文档提供的使用信息，打开命令行 执行 webpack-dev-server --open 这时候就可以进去了。 但……还是会报错！ （继续改bug，请阅读下一章）]]></content>
-      <categories>
-        <category>webpack</category>
-      </categories>
-      <tags>
-        <tag>webpack</tag>
-        <tag>前端构建工具</tag>
       </tags>
   </entry>
   <entry>
