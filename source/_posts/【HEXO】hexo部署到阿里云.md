@@ -2,6 +2,9 @@
 title: 【HEXO】hexo部署到阿里云
 date: 2020-05-05 21:02:54
 tags:
+  - nginx
+  - git
+  - hexo
 ---
 
 从零搭建 Hexo 博客并部署阿里云服务器（奶妈级教学）\_运维\_Object 的博客-CSDN 博客 https://blog.csdn.net/NoCortY/article/details/99631249
