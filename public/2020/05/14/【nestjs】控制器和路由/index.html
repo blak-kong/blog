@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    【HTML】参考博客 |  非黑非白の博客
+    【nestjs】控制器和路由 |  非黑非白の博客
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -34,7 +34,7 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-【HTML】参考博客" class="article article-type-post" itemscope
+  <article id="post-【nestjs】控制器和路由" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -42,7 +42,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  【HTML】参考博客
+  【nestjs】控制器和路由
 </h1>
  
 
@@ -51,8 +51,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/05/05/【HTML】参考博客/" class="article-date">
-  <time datetime="2020-05-05T13:10:39.000Z" itemprop="datePublished">2020-05-05</time>
+      <a href="/2020/05/14/【nestjs】控制器和路由/" class="article-date">
+  <time datetime="2020-05-13T17:23:08.000Z" itemprop="datePublished">2020-05-14</time>
 </a>
       
       
@@ -62,7 +62,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> post.word_count:</span>
-            <span class="post-count">541</span>
+            <span class="post-count">931</span>
         </span>
     </span>
 
@@ -71,7 +71,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> post.read_time≈</span>
-            <span class="post-count">2 post.minutes</span>
+            <span class="post-count">3 post.minutes</span>
         </span>
     </span>
 </div>
@@ -96,45 +96,78 @@
       
 
       
-      <script src="/assets/js/APlayer.min.js"> </script><p>[toc]</p>
-<h2 id="一、-网页排版"><a href="#一、-网页排版" class="headerlink" title="一、 网页排版"></a>一、 网页排版</h2><p>排版标签：</p>
-<ul>
-<li><p><code>&lt;h1&gt;</code></p>
-</li>
-<li><p><code>&lt;p&gt;</code></p>
-</li>
-<li><p><code>&lt;hr /&gt;</code> 水平分割线标签</p>
-</li>
-<li><p><code>&lt;br /&gt;</code> 换行标签</p>
-</li>
-<li><p><code>&lt;div&gt;</code></p>
-</li>
-<li><p><code>&lt;span&gt;</code></p>
-</li>
-<li><p><code>&lt;pre&gt;</code> 预定义标签：原样输出内容</p>
-</li>
-</ul>
-<p>原文地址： <a href="https://github.com/qianguyihao/Web/blob/master/01-HTML/04-HTML%E6%A0%87%E7%AD%BE%EF%BC%9A%E6%8E%92%E7%89%88%E6%A0%87%E7%AD%BE.md" target="_blank" rel="noopener">HTML 标签：排版标签</a></p>
-<h2 id="二、字体与锚点链接"><a href="#二、字体与锚点链接" class="headerlink" title="二、字体与锚点链接"></a>二、字体与锚点链接</h2><p>个人简要笔记：</p>
-<h3 id="2-1-字体"><a href="#2-1-字体" class="headerlink" title="2-1.字体"></a>2-1.字体</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// b s u i 都是已经废弃的，现在用左边更语义化的标签</span><br><span class="line">strong == b // strong 粗体标签 语义: 定义重要性强调的文字</span><br><span class="line">del == s // del 中划线/删除线 语义(deleted): 定义被删除的文字</span><br><span class="line">ins == u // ins 下划线 语义(inseted): 定义插入的文字</span><br><span class="line">em == i // em 斜体 语义(emphasized): 定义强调的文字</span><br></pre></td></tr></table></figure>
-<h3 id="2-2-锚点链接"><a href="#2-2-锚点链接" class="headerlink" title="2-2.锚点链接"></a>2-2.锚点链接</h3><p>锚点链接即是通过给元素设置 id（设置标记），实现浏览器可以在链接访问网页的时候，在根据链接地址后面的<code>#id</code>参数，来自动定位到网页文档的对应位置。</p>
+      <script src="/assets/js/APlayer.min.js"> </script><p>[TOC]</p>
+<h2 id="一、NestJS-中的控制器"><a href="#一、NestJS-中的控制器" class="headerlink" title="一、NestJS 中的控制器"></a>一、NestJS 中的控制器</h2><p>Nest 中的控制器层负责处理传入的请求, 并返回对客户端的响应。</p>
+<p>控制器的目的是接收应用的特定请求。</p>
+<p>路由机制控制哪个控制器接收哪些请求。</p>
+<p>通常， 每个控制器有多个路由，不同的路由可以执行不同的操作。</p>
 <blockquote>
-<p>锚链接的作用是在本页面或者其他页面的的不同位置进行跳转。</p>
+<p>ps：express、koa 需要引入 router 中间件。而 nestjs 自己做了封装，可以直接使用控制器做路由。</p>
 </blockquote>
-<p>比如说，在网页底部有一个向上箭头，点击箭头后回到顶部，这个就可以利用锚链接。</p>
-<p>不过锚链接没有动画，是立即跳转到对应位置。所以实际使用中，往往需要依赖别人封装好的插件。</p>
-<p>例如<code>navScroll.ja</code></p>
-<p>参考原文地址： <a href="https://github.com/qianguyihao/Web/blob/master/01-HTML/05-HTML%E6%A0%87%E7%AD%BE%EF%BC%9A%E5%AD%97%E4%BD%93%E6%A0%87%E7%AD%BE%E5%92%8C%E8%B6%85%E9%93%BE%E6%8E%A5.md" target="_blank" rel="noopener">HTML 标签：字体标签和超链接</a></p>
-<h2 id="三、图片标签"><a href="#三、图片标签" class="headerlink" title="三、图片标签"></a>三、图片标签</h2><p>主要注意 align 属性</p>
-<p>图片的 align 属性：图片和周围文字的相对位置。</p>
-<p>属性取值可以是：bottom（默认）、center、top、left、right。</p>
-<p>如果想实现图文混排的效果，请使用 align 属性，取值为 left 或 right。</p>
-<p>我们来分别看一下这 align 属性的这几个属性值的区别。</p>
-<p>1、align=””，图片和文字低端对齐。即默认情况下的显示效果</p>
-<p>2、align=”center”：图片和文字水平方向上居中对齐。 3、align=”top”：图片与文字顶端对齐。</p>
-<p>4、align=”left”：图片在文字的左边。</p>
-<p>5、align=”right”：图片在文字的右边。</p>
-<p>原文地址： <a href="https://github.com/qianguyihao/Web/blob/master/01-HTML/06-HTML%E6%A0%87%E7%AD%BE%EF%BC%9A%E5%9B%BE%E7%89%87%E6%A0%87%E7%AD%BE.md" target="_blank" rel="noopener">HTML 标签：图片标签</a></p>
+<p>可以通过 NestCLi 创建控制器：</p>
+<blockquote>
+<p>nest g controller [控制器名字]</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 补充：查看nest g 提供的所有方法</span><br><span class="line">nest g -help</span><br></pre></td></tr></table></figure>
+<h2 id="二、NestJS-中的路由"><a href="#二、NestJS-中的路由" class="headerlink" title="二、NestJS 中的路由"></a>二、NestJS 中的路由</h2><p>Nestjs 中没有单独配置路由的地方。</p>
+<p>定义好控制器后 nestjs 会自动给我们配置对应的路由。</p>
+<p>下面代码定义了一个新闻控制器。装饰器为@Controller(‘article’)</p>
+<p>装饰器参数里面的’article’ 就是我们的路由。</p>
+<p>如果我们要返回 index 方法里面的内容我们在浏览器输入 <a href="http://localhost:3000/article" target="_blank" rel="noopener">http://localhost:3000/article</a></p>
+<p>如果我们要返回 add 方法里面的内容我们在浏览器输入 <a href="http://localhost:3000/article/add" target="_blank" rel="noopener">http://localhost:3000/article/add</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Controller, Get &#125; from &apos;@nestjs/common&apos;;</span><br><span class="line"></span><br><span class="line">@Controller(&apos;article&apos;)</span><br><span class="line">export class ArticleController &#123;</span><br><span class="line">    @Get()</span><br><span class="line">    index(): string &#123;</span><br><span class="line">        return ‘这是 article 里面的 index’;</span><br><span class="line">    &#125;</span><br><span class="line">    @Get(‘add’)</span><br><span class="line">    add(): string &#123;</span><br><span class="line">        return ‘这是 article 里面的 index’;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>关于 nest 的 return：</p>
+<p>当请求处理程序返回 JavaScript 对象或数组时，它将自动序列化为 JSON。但是，当它返回一个字符串时，Nest 将只发送一个字符串而不是序列化它。</p>
+<p>这使响应处理变得简单：只需要返回值，Nest 负责其余部分。</p>
+<h2 id="三、NestJS-中的-Get-Post-以及通过方法参数装饰器获取传值"><a href="#三、NestJS-中的-Get-Post-以及通过方法参数装饰器获取传值" class="headerlink" title="三、NestJS 中的 Get Post 以及通过方法参数装饰器获取传值"></a>三、NestJS 中的 Get Post 以及通过方法参数装饰器获取传值</h2><h3 id="1、首先看一个-Get-Post-请求的例子"><a href="#1、首先看一个-Get-Post-请求的例子" class="headerlink" title="1、首先看一个 Get Post 请求的例子"></a>1、首先看一个 Get Post 请求的例子</h3><p>注意我们使用 nestjs 内置装饰器的时候必须得在 <code>@nestjs/common</code> 模块下面引入对应的装饰器。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 引入装饰器</span><br><span class="line">import &#123; Controller, Get, Post &#125; from &apos;@nestjs/common&apos;;</span><br><span class="line"></span><br><span class="line">@Controller(&apos;cats&apos;)</span><br><span class="line">export class CatsController &#123;</span><br><span class="line">    @Post()</span><br><span class="line">    create(): string &#123;</span><br><span class="line">        return &apos;This action adds a new cat&apos;;</span><br><span class="line">    &#125;</span><br><span class="line">    @Get()</span><br><span class="line">    findAll(): string &#123;</span><br><span class="line">        return &apos;This action returns all cats&apos;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Nestjs 也提供了其他 <strong>HTTP 请求方法的装饰器</strong> <code>@Put()</code> 、<code>@Delete()</code>、<code>@Patch()</code>、 <code>@Options()</code>、 <code>@Head()</code>和 <code>@All()</code></p>
+<h2 id="2、Nestjs-中获取请求参数"><a href="#2、Nestjs-中获取请求参数" class="headerlink" title="2、Nestjs 中获取请求参数"></a>2、Nestjs 中获取请求参数</h2><p>在 Nestjs 中获取 Get 传值或者 Post 提交的数据的话我们可以使用 Nestjs 中的装饰器来获取。</p>
+<table>
+<thead>
+<tr>
+<th>装饰器</th>
+<th>使用方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>@Request()</td>
+<td>req</td>
+</tr>
+<tr>
+<td>@Next()</td>
+<td>next</td>
+</tr>
+<tr>
+<td>@Session()</td>
+<td>req.session</td>
+</tr>
+<tr>
+<td>@Param(key?: string)</td>
+<td>req.params / req.params[key]</td>
+</tr>
+<tr>
+<td>@Body(key?: string)</td>
+<td>req.body / req.body[key]</td>
+</tr>
+<tr>
+<td>@Query(key?: string)</td>
+<td>req.query / req.query[key]</td>
+</tr>
+<tr>
+<td>@Headers(name?: string)</td>
+<td>req.headers / req.headers[name]</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import &#123; Controller, Get, Post &#125; from &apos;@nestjs/common&apos;;</span><br><span class="line"></span><br><span class="line">@Controller(&apos;news&apos;)</span><br><span class="line">export class NewsController &#123;</span><br><span class="line">    @Get()</span><br><span class="line">    getAbout(@Query() query):string &#123;</span><br><span class="line">        console.log(query); //这里获取的就是所有的 Get 传值</span><br><span class="line">        return &apos;这是 getAbout&apos;</span><br><span class="line">    &#125;</span><br><span class="line">    @Get(&apos;list&apos;)</span><br><span class="line">    getNews(@Query(‘id’) query):string &#123;</span><br><span class="line">        console.log(query); //这里获取的就是 Get 传值里面的 Id 的值</span><br><span class="line">        return &apos;这是 getNews&apos;</span><br><span class="line">    &#125;</span><br><span class="line">    @Post(&apos;doAdd&apos;)</span><br><span class="line">    async addNews(@Body() newsData)&#123;</span><br><span class="line">        console.log(newsData);</span><br><span class="line">        return &apos;增加新闻&apos;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>四、NestJS 中的动态路由</p>
+<p>当您需要接受动态数据作为请求的一部分时，具有静态路径的路由将不起作用（例如，GET /cats/1)获取具有 id 的 cat 1）。</p>
+<p>为了定义带参数的路由，我们可以在路由中添加路由参数标记，以捕获请求 URL 中该位置的动态值。</p>
+<p>@Get() 下面的装饰器示例中的路由参数标记演示了此用法。</p>
+<p>可以使用 @Param() 装饰器访问以这种方式声明的路由参数，该装饰器应添加到函数签名中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Get(&apos;:id&apos;)</span><br><span class="line">findOne(@Param() params): string &#123;</span><br><span class="line">    console.log(params.id);</span><br><span class="line">    return `This action returns a #$&#123;params.id&#125; cat`;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
       <!-- reward -->
@@ -203,14 +236,14 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://blak-kong.github.io/2020/05/05/【HTML】参考博客/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://blak-kong.github.io/2020/05/14/【nestjs】控制器和路由/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/他人博客/">他人博客</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网页排版/">网页排版</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nestjs/">nestjs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程笔记/">教程笔记</a></li></ul>
 
 
     </footer>
@@ -221,19 +254,10 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/05/07/【docker】centos安装docker和docker-compose/" class="article-nav-link">
-        <strong class="article-nav-caption">上一篇</strong>
-        <div class="article-nav-title">
-          
-            【docker】centos安装docker和docker-compose
-          
-        </div>
-      </a>
     
-    
-      <a href="/2020/05/05/【HEXO】hexo部署到阿里云/" class="article-nav-link">
+      <a href="/2020/05/14/【nestjs】创建nestjs项目/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">【HEXO】hexo部署到阿里云</div>
+        <div class="article-nav-title">【nestjs】创建nestjs项目</div>
       </a>
     
   </nav>

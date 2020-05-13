@@ -1,6 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[【nestjs】控制器和路由]]></title>
+    <url>%2F2020%2F05%2F14%2F%E3%80%90nestjs%E3%80%91%E6%8E%A7%E5%88%B6%E5%99%A8%E5%92%8C%E8%B7%AF%E7%94%B1%2F</url>
+    <content type="text"><![CDATA[[TOC] 一、NestJS 中的控制器Nest 中的控制器层负责处理传入的请求, 并返回对客户端的响应。 控制器的目的是接收应用的特定请求。 路由机制控制哪个控制器接收哪些请求。 通常， 每个控制器有多个路由，不同的路由可以执行不同的操作。 ps：express、koa 需要引入 router 中间件。而 nestjs 自己做了封装，可以直接使用控制器做路由。 可以通过 NestCLi 创建控制器： nest g controller [控制器名字] 12// 补充：查看nest g 提供的所有方法nest g -help 二、NestJS 中的路由Nestjs 中没有单独配置路由的地方。 定义好控制器后 nestjs 会自动给我们配置对应的路由。 下面代码定义了一个新闻控制器。装饰器为@Controller(‘article’) 装饰器参数里面的’article’ 就是我们的路由。 如果我们要返回 index 方法里面的内容我们在浏览器输入 http://localhost:3000/article 如果我们要返回 add 方法里面的内容我们在浏览器输入 http://localhost:3000/article/add 12345678910111213import &#123; Controller, Get &#125; from &apos;@nestjs/common&apos;;@Controller(&apos;article&apos;)export class ArticleController &#123; @Get() index(): string &#123; return ‘这是 article 里面的 index’; &#125; @Get(‘add’) add(): string &#123; return ‘这是 article 里面的 index’; &#125;&#125; 关于 nest 的 return： 当请求处理程序返回 JavaScript 对象或数组时，它将自动序列化为 JSON。但是，当它返回一个字符串时，Nest 将只发送一个字符串而不是序列化它。 这使响应处理变得简单：只需要返回值，Nest 负责其余部分。 三、NestJS 中的 Get Post 以及通过方法参数装饰器获取传值1、首先看一个 Get Post 请求的例子注意我们使用 nestjs 内置装饰器的时候必须得在 @nestjs/common 模块下面引入对应的装饰器。 1234567891011121314// 引入装饰器import &#123; Controller, Get, Post &#125; from &apos;@nestjs/common&apos;;@Controller(&apos;cats&apos;)export class CatsController &#123; @Post() create(): string &#123; return &apos;This action adds a new cat&apos;; &#125; @Get() findAll(): string &#123; return &apos;This action returns all cats&apos;; &#125;&#125; Nestjs 也提供了其他 HTTP 请求方法的装饰器 @Put() 、@Delete()、@Patch()、 @Options()、 @Head()和 @All() 2、Nestjs 中获取请求参数在 Nestjs 中获取 Get 传值或者 Post 提交的数据的话我们可以使用 Nestjs 中的装饰器来获取。 装饰器 使用方法 @Request() req @Next() next @Session() req.session @Param(key?: string) req.params / req.params[key] @Body(key?: string) req.body / req.body[key] @Query(key?: string) req.query / req.query[key] @Headers(name?: string) req.headers / req.headers[name] 123456789101112131415161718192021import &#123; Controller, Get, Post &#125; from &apos;@nestjs/common&apos;;@Controller(&apos;news&apos;)export class NewsController &#123; @Get() getAbout(@Query() query):string &#123; console.log(query); //这里获取的就是所有的 Get 传值 return &apos;这是 getAbout&apos; &#125; @Get(&apos;list&apos;) getNews(@Query(‘id’) query):string &#123; console.log(query); //这里获取的就是 Get 传值里面的 Id 的值 return &apos;这是 getNews&apos; &#125; @Post(&apos;doAdd&apos;) async addNews(@Body() newsData)&#123; console.log(newsData); return &apos;增加新闻&apos; &#125;&#125; 四、NestJS 中的动态路由 当您需要接受动态数据作为请求的一部分时，具有静态路径的路由将不起作用（例如，GET /cats/1)获取具有 id 的 cat 1）。 为了定义带参数的路由，我们可以在路由中添加路由参数标记，以捕获请求 URL 中该位置的动态值。 @Get() 下面的装饰器示例中的路由参数标记演示了此用法。 可以使用 @Param() 装饰器访问以这种方式声明的路由参数，该装饰器应添加到函数签名中 12345@Get(&apos;:id&apos;)findOne(@Param() params): string &#123; console.log(params.id); return `This action returns a #$&#123;params.id&#125; cat`;&#125;]]></content>
+      <tags>
+        <tag>nestjs</tag>
+        <tag>教程笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[【nestjs】创建nestjs项目]]></title>
+    <url>%2F2020%2F05%2F14%2F%E3%80%90nestjs%E3%80%91%E5%88%9B%E5%BB%BAnestjs%E9%A1%B9%E7%9B%AE%2F</url>
+    <content type="text"><![CDATA[Nest 是一个渐进的 Node.js 框架，可以在 TypeScript 和 JavaScript (ES6、ES7、ES8)之上构 建高效、可伸缩的企业级服务器端应用程序。 Nest 基于 TypeScript 编写并且结合了 OOP（面向对象编程），FP（函数式编程）和 FRP （函数式响应编程）的相关理念。在设计上的很多灵感来自于 Angular，Angular 的很多模 式又来自于 Java 中的 Spring 框架，依赖注入、面向切面编程等，所以我们也可以认为： Nest 是 Node.js 版的 Spring 框架。 Nest 框架底层 HTTP 平台默认是基于 Express 实现的，所以无需担心第三方库的缺失。 Nest 旨在成为一个与平台无关的框架。 通过平台，可以创建可重用的逻辑部件，开发人员可以利用这些部件来跨越多种不同类型的应用程序。 从技术上讲，Nest 可以在创建适配器 后使用任何 Node HTTP 框架。 有两个支持开箱即用的 HTTP 平台：express 和 fastify。 您 可以选择最适合您需求的产品。 NestJs 的核心思想：就是提供了一个层与层直接的耦合度极小,抽象化极高的一个架构 体系。 Nestjs 目前在行业内具有很高的关注度，所以我们有必要学习一下 官网：https://nestjs.com/ 中文网站：https://docs.nestjs.cn/ GitHub: https://github.com/nestjs/nest nest 主要是学习，国内实际使用，还是优先选 eggjs（文档第一）[TOC] 安装 nestjs以下三种 nest 脚手架的全局安装方式，任选其一 npm i -g @nestjs/cli yarn global add @nestjs/cli cnpm i -g @nestjs/cli 创建项目 nest new nestdemo 接下来按提示，进入目录，运行即可]]></content>
+      <tags>
+        <tag>nestjs</tag>
+        <tag>教程笔记</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[【docker】部署第一个应用doclever]]></title>
+    <url>%2F2020%2F05%2F07%2F%E3%80%90docker%E3%80%91%E9%83%A8%E7%BD%B2%E7%AC%AC%E4%B8%80%E4%B8%AA%E5%BA%94%E7%94%A8doclever%2F</url>
+    <content type="text"><![CDATA[doclever 开源接口管理平台的 github 地址 为了方便部署和使用，我们使用 docker-compose 用法： ① 在文件夹下创建docker-compose.yml，填入以下内容 123456789101112131415161718192021222324version: &quot;2&quot;services: DOClever: image: lw96/doclever restart: always container_name: &quot;DOClever&quot; ports: - 20080:10000 volumes: - /svr/doclever/file:/root/DOClever/data/file - /svr/doclever/img:/root/DOClever/data/img - /svr/doclever/tmp:/root/DOClever/data/tmp environment: - DB_HOST=mongodb://mongo:27017/DOClever - PORT=10000 links: - mongo:mongo mongo: image: mongo:latest restart: always container_name: &quot;mongodb&quot; volumes: - /svr/doclever/db:/data/db ② 运行 docker-compose up -d]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[2]]></title>
+    <url>%2F2020%2F05%2F07%2F2%2F</url>
+    <content type="text"><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[【docker】centos安装docker和docker-compose]]></title>
+    <url>%2F2020%2F05%2F07%2F%E3%80%90docker%E3%80%91centos%E5%AE%89%E8%A3%85docker%E5%92%8Cdocker-compose%2F</url>
+    <content type="text"><![CDATA[[TOC] docker 官方文档：centos 安装 docker一、先运行卸载，确保环境安全12345678sudo yum remove docker \ docker-client \ docker-client-latest \ docker-common \ docker-latest \ docker-latest-logrotate \ docker-logrotate \ docker-engine 二、使用储存库安装在首次在新主机上安装 Docker 引擎之前，需要设置 Docker 存储库。之后，您可以从存储库中安装和更新 Docker。 设置存储库需要安装yum-utils包 它提供了yum-config-manager工具，并设置稳定储存库。 1sudo yum install -y yum-utils 123sudo yum-config-manager \ --add-repo \ https://download.docker.com/linux/centos/docker-ce.repo 三、安装 docker12# 安装最新版sudo yum install docker-ce docker-ce-cli containerd.io 12345678# 安装指定版# 查看版本列表yum list docker-ce --showduplicates | sort -r# 指定版本 有些版本有冒号# 例如docker-ce.x86_64 3:18.09.1-3.el7# 应该忽略冒号之前的内容，正确示例：docker-ce-18.09.1sudo yum install docker-ce-&lt;VERSION_STRING&gt; docker-ce-cli-&lt;VERSION_STRING&gt; containerd.io 四、启动 docker sudo systemctl start docker 五、试运行 hello-world sudo docker run hello-world运行成功则安装成功，且能正常使用 docker-compose参考菜鸟教程：https://www.runoob.com/docker/docker-compose.html Linux 上我们可以从 Github 上下载它的二进制包来使用，最新发行的版本地址：https://github.com/docker/compose/releases。 运行以下命令以下载 Docker Compose 的指定版本 1.25.4，要安装其他版本的 Compose，请替换 1.24.1。 1curl -L https://github.com/docker/compose/releases/download/1.25.4/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose 将可执行权限应用于二进制文件： 1chmod +x /usr/local/bin/docker-compose 创建软链： 1sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose 测试是否安装成功 123docker-compose --version# 成功打印 docker-compose version 1.25.4, build 8d51620a 配置加速地址道客云：http://get.daocloud.io/ 道客云提供加速：https://www.daocloud.io/mirror 运行加速配置 curl -sSL https://get.daocloud.io/daotools/set_mirror.sh | sh -s http://f1361db2.m.daocloud.io]]></content>
+      <tags>
+        <tag>docker</tag>
+        <tag>docker-compose</tag>
+        <tag>centos</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[【HTML】参考博客]]></title>
     <url>%2F2020%2F05%2F05%2F%E3%80%90HTML%E3%80%91%E5%8F%82%E8%80%83%E5%8D%9A%E5%AE%A2%2F</url>
     <content type="text"><![CDATA[[toc] 一、 网页排版排版标签： &lt;h1&gt; &lt;p&gt; &lt;hr /&gt; 水平分割线标签 &lt;br /&gt; 换行标签 &lt;div&gt; &lt;span&gt; &lt;pre&gt; 预定义标签：原样输出内容 原文地址： HTML 标签：排版标签 二、字体与锚点链接个人简要笔记： 2-1.字体12345// b s u i 都是已经废弃的，现在用左边更语义化的标签strong == b // strong 粗体标签 语义: 定义重要性强调的文字del == s // del 中划线/删除线 语义(deleted): 定义被删除的文字ins == u // ins 下划线 语义(inseted): 定义插入的文字em == i // em 斜体 语义(emphasized): 定义强调的文字 2-2.锚点链接锚点链接即是通过给元素设置 id（设置标记），实现浏览器可以在链接访问网页的时候，在根据链接地址后面的#id参数，来自动定位到网页文档的对应位置。 锚链接的作用是在本页面或者其他页面的的不同位置进行跳转。 比如说，在网页底部有一个向上箭头，点击箭头后回到顶部，这个就可以利用锚链接。 不过锚链接没有动画，是立即跳转到对应位置。所以实际使用中，往往需要依赖别人封装好的插件。 例如navScroll.ja 参考原文地址： HTML 标签：字体标签和超链接 三、图片标签主要注意 align 属性 图片的 align 属性：图片和周围文字的相对位置。 属性取值可以是：bottom（默认）、center、top、left、right。 如果想实现图文混排的效果，请使用 align 属性，取值为 left 或 right。 我们来分别看一下这 align 属性的这几个属性值的区别。 1、align=””，图片和文字低端对齐。即默认情况下的显示效果 2、align=”center”：图片和文字水平方向上居中对齐。 3、align=”top”：图片与文字顶端对齐。 4、align=”left”：图片在文字的左边。 5、align=”right”：图片在文字的右边。 原文地址： HTML 标签：图片标签]]></content>
@@ -14,6 +52,11 @@
     <title><![CDATA[【HEXO】hexo部署到阿里云]]></title>
     <url>%2F2020%2F05%2F05%2F%E3%80%90HEXO%E3%80%91hexo%E9%83%A8%E7%BD%B2%E5%88%B0%E9%98%BF%E9%87%8C%E4%BA%91%2F</url>
     <content type="text"><![CDATA[从零搭建 Hexo 博客并部署阿里云服务器（奶妈级教学）_运维_Object 的博客-CSDN 博客 https://blog.csdn.net/NoCortY/article/details/99631249 有一个修改文件权限的坑，不了解 linux，卡了几小时。 如果遇到了，参考下面这篇文章，chmod 这一步改成 777 即可 chmod 修改文件权限 777 和 754_运维_pythonw 的博客-CSDN 博客 https://blog.csdn.net/pythonw/article/details/80263428]]></content>
+      <tags>
+        <tag>nginx</tag>
+        <tag>git</tag>
+        <tag>hexo</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[【HTTPS】记一次阿里云配置https]]></title>
@@ -23,8 +66,8 @@
         <category>云服务器</category>
       </categories>
       <tags>
-        <tag>https</tag>
         <tag>nginx</tag>
+        <tag>https</tag>
       </tags>
   </entry>
   <entry>

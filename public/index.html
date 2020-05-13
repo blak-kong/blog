@@ -73,6 +73,461 @@
     
     
     
+    <article id="post-【nestjs】控制器和路由" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/14/【nestjs】控制器和路由/"
+    >【nestjs】控制器和路由</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/14/【nestjs】控制器和路由/" class="article-date">
+  <time datetime="2020-05-13T17:23:08.000Z" itemprop="datePublished">2020-05-14</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <script src="/assets/js/APlayer.min.js"> </script><p>[TOC]</p>
+<h2 id="一、NestJS-中的控制器"><a href="#一、NestJS-中的控制器" class="headerlink" title="一、NestJS 中的控制器"></a>一、NestJS 中的控制器</h2><p>Nest 中的控制器层负责处理传入的请求, 并返回对客户端的响应。</p>
+<p>控制器的目的是接收应用的特定请求。</p>
+<p>路由机制控制哪个控制器接收哪些请求。</p>
+<p>通常， 每个控制器有多个路由，不同的路由可以执行不同的操作。</p>
+<blockquote>
+<p>ps：express、koa 需要引入 router 中间件。而 nestjs 自己做了封装，可以直接使用控制器做路由。</p>
+</blockquote>
+<p>可以通过 NestCLi 创建控制器：</p>
+<blockquote>
+<p>nest g controller [控制器名字]</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 补充：查看nest g 提供的所有方法</span><br><span class="line">nest g -help</span><br></pre></td></tr></table></figure>
+<h2 id="二、NestJS-中的路由"><a href="#二、NestJS-中的路由" class="headerlink" title="二、NestJS 中的路由"></a>二、NestJS 中的路由</h2><p>Nestjs 中没有单独配置路由的地方。</p>
+<p>定义好控制器后 nestjs 会自动给我们配置对应的路由。</p>
+<p>下面代码定义了一个新闻控制器。装饰器为@Controller(‘article’)</p>
+<p>装饰器参数里面的’article’ 就是我们的路由。</p>
+<p>如果我们要返回 index 方法里面的内容我们在浏览器输入 <a href="http://localhost:3000/article" target="_blank" rel="noopener">http://localhost:3000/article</a></p>
+<p>如果我们要返回 add 方法里面的内容我们在浏览器输入 <a href="http://localhost:3000/article/add" target="_blank" rel="noopener">http://localhost:3000/article/add</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">import &#123; Controller, Get &#125; from &apos;@nestjs/common&apos;;</span><br><span class="line"></span><br><span class="line">@Controller(&apos;article&apos;)</span><br><span class="line">export class ArticleController &#123;</span><br><span class="line">    @Get()</span><br><span class="line">    index(): string &#123;</span><br><span class="line">        return ‘这是 article 里面的 index’;</span><br><span class="line">    &#125;</span><br><span class="line">    @Get(‘add’)</span><br><span class="line">    add(): string &#123;</span><br><span class="line">        return ‘这是 article 里面的 index’;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>关于 nest 的 return：</p>
+<p>当请求处理程序返回 JavaScript 对象或数组时，它将自动序列化为 JSON。但是，当它返回一个字符串时，Nest 将只发送一个字符串而不是序列化它。</p>
+<p>这使响应处理变得简单：只需要返回值，Nest 负责其余部分。</p>
+<h2 id="三、NestJS-中的-Get-Post-以及通过方法参数装饰器获取传值"><a href="#三、NestJS-中的-Get-Post-以及通过方法参数装饰器获取传值" class="headerlink" title="三、NestJS 中的 Get Post 以及通过方法参数装饰器获取传值"></a>三、NestJS 中的 Get Post 以及通过方法参数装饰器获取传值</h2><h3 id="1、首先看一个-Get-Post-请求的例子"><a href="#1、首先看一个-Get-Post-请求的例子" class="headerlink" title="1、首先看一个 Get Post 请求的例子"></a>1、首先看一个 Get Post 请求的例子</h3><p>注意我们使用 nestjs 内置装饰器的时候必须得在 <code>@nestjs/common</code> 模块下面引入对应的装饰器。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">// 引入装饰器</span><br><span class="line">import &#123; Controller, Get, Post &#125; from &apos;@nestjs/common&apos;;</span><br><span class="line"></span><br><span class="line">@Controller(&apos;cats&apos;)</span><br><span class="line">export class CatsController &#123;</span><br><span class="line">    @Post()</span><br><span class="line">    create(): string &#123;</span><br><span class="line">        return &apos;This action adds a new cat&apos;;</span><br><span class="line">    &#125;</span><br><span class="line">    @Get()</span><br><span class="line">    findAll(): string &#123;</span><br><span class="line">        return &apos;This action returns all cats&apos;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Nestjs 也提供了其他 <strong>HTTP 请求方法的装饰器</strong> <code>@Put()</code> 、<code>@Delete()</code>、<code>@Patch()</code>、 <code>@Options()</code>、 <code>@Head()</code>和 <code>@All()</code></p>
+<h2 id="2、Nestjs-中获取请求参数"><a href="#2、Nestjs-中获取请求参数" class="headerlink" title="2、Nestjs 中获取请求参数"></a>2、Nestjs 中获取请求参数</h2><p>在 Nestjs 中获取 Get 传值或者 Post 提交的数据的话我们可以使用 Nestjs 中的装饰器来获取。</p>
+<table>
+<thead>
+<tr>
+<th>装饰器</th>
+<th>使用方法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>@Request()</td>
+<td>req</td>
+</tr>
+<tr>
+<td>@Next()</td>
+<td>next</td>
+</tr>
+<tr>
+<td>@Session()</td>
+<td>req.session</td>
+</tr>
+<tr>
+<td>@Param(key?: string)</td>
+<td>req.params / req.params[key]</td>
+</tr>
+<tr>
+<td>@Body(key?: string)</td>
+<td>req.body / req.body[key]</td>
+</tr>
+<tr>
+<td>@Query(key?: string)</td>
+<td>req.query / req.query[key]</td>
+</tr>
+<tr>
+<td>@Headers(name?: string)</td>
+<td>req.headers / req.headers[name]</td>
+</tr>
+</tbody>
+</table>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">import &#123; Controller, Get, Post &#125; from &apos;@nestjs/common&apos;;</span><br><span class="line"></span><br><span class="line">@Controller(&apos;news&apos;)</span><br><span class="line">export class NewsController &#123;</span><br><span class="line">    @Get()</span><br><span class="line">    getAbout(@Query() query):string &#123;</span><br><span class="line">        console.log(query); //这里获取的就是所有的 Get 传值</span><br><span class="line">        return &apos;这是 getAbout&apos;</span><br><span class="line">    &#125;</span><br><span class="line">    @Get(&apos;list&apos;)</span><br><span class="line">    getNews(@Query(‘id’) query):string &#123;</span><br><span class="line">        console.log(query); //这里获取的就是 Get 传值里面的 Id 的值</span><br><span class="line">        return &apos;这是 getNews&apos;</span><br><span class="line">    &#125;</span><br><span class="line">    @Post(&apos;doAdd&apos;)</span><br><span class="line">    async addNews(@Body() newsData)&#123;</span><br><span class="line">        console.log(newsData);</span><br><span class="line">        return &apos;增加新闻&apos;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>四、NestJS 中的动态路由</p>
+<p>当您需要接受动态数据作为请求的一部分时，具有静态路径的路由将不起作用（例如，GET /cats/1)获取具有 id 的 cat 1）。</p>
+<p>为了定义带参数的路由，我们可以在路由中添加路由参数标记，以捕获请求 URL 中该位置的动态值。</p>
+<p>@Get() 下面的装饰器示例中的路由参数标记演示了此用法。</p>
+<p>可以使用 @Param() 装饰器访问以这种方式声明的路由参数，该装饰器应添加到函数签名中</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@Get(&apos;:id&apos;)</span><br><span class="line">findOne(@Param() params): string &#123;</span><br><span class="line">    console.log(params.id);</span><br><span class="line">    return `This action returns a #$&#123;params.id&#125; cat`;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nestjs/">nestjs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程笔记/">教程笔记</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-【nestjs】创建nestjs项目" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/14/【nestjs】创建nestjs项目/"
+    >【nestjs】创建nestjs项目</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/14/【nestjs】创建nestjs项目/" class="article-date">
+  <time datetime="2020-05-13T17:22:27.000Z" itemprop="datePublished">2020-05-14</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <script src="/assets/js/APlayer.min.js"> </script><p>Nest 是一个渐进的 Node.js 框架，可以在 TypeScript 和 JavaScript (ES6、ES7、ES8)之上构 建高效、可伸缩的企业级服务器端应用程序。</p>
+<p>Nest 基于 TypeScript 编写并且结合了 OOP（面向对象编程），FP（函数式编程）和 FRP （函数式响应编程）的相关理念。在设计上的很多灵感来自于 Angular，Angular 的很多模 式又来自于 Java 中的 Spring 框架，依赖注入、面向切面编程等，所以我们也可以认为： Nest 是 Node.js 版的 Spring 框架。</p>
+<p>Nest 框架底层 HTTP 平台默认是基于 Express 实现的，所以无需担心第三方库的缺失。</p>
+<p>Nest 旨在成为一个与平台无关的框架。 通过平台，可以创建可重用的逻辑部件，开发人员可以利用这些部件来跨越多种不同类型的应用程序。</p>
+<p>从技术上讲，Nest 可以在创建适配器 后使用任何 Node HTTP 框架。 有两个支持开箱即用的 HTTP 平台：express 和 fastify。 您 可以选择最适合您需求的产品。 NestJs 的核心思想：就是提供了一个层与层直接的耦合度极小,抽象化极高的一个架构 体系。</p>
+<p>Nestjs 目前在行业内具有很高的关注度，所以我们有必要学习一下</p>
+<p>官网：<a href="https://nestjs.com/" target="_blank" rel="noopener">https://nestjs.com/</a></p>
+<p>中文网站：<a href="https://docs.nestjs.cn/" target="_blank" rel="noopener">https://docs.nestjs.cn/</a></p>
+<p>GitHub: <a href="https://github.com/nestjs/nest" target="_blank" rel="noopener">https://github.com/nestjs/nest</a></p>
+<h1 id="nest-主要是学习，国内实际使用，还是优先选-eggjs（文档第一）"><a href="#nest-主要是学习，国内实际使用，还是优先选-eggjs（文档第一）" class="headerlink" title="nest 主要是学习，国内实际使用，还是优先选 eggjs（文档第一）"></a>nest 主要是学习，国内实际使用，还是优先选 eggjs（文档第一）</h1><p>[TOC]</p>
+<h2 id="安装-nestjs"><a href="#安装-nestjs" class="headerlink" title="安装 nestjs"></a>安装 nestjs</h2><p>以下三种 nest 脚手架的全局安装方式，任选其一</p>
+<blockquote>
+<p>npm i -g @nestjs/cli</p>
+</blockquote>
+<blockquote>
+<p>yarn global add @nestjs/cli</p>
+</blockquote>
+<blockquote>
+<p>cnpm i -g @nestjs/cli</p>
+</blockquote>
+<h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><blockquote>
+<p>nest new nestdemo</p>
+</blockquote>
+<p>接下来按提示，进入目录，运行即可</p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nestjs/">nestjs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程笔记/">教程笔记</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-【docker】部署第一个应用doclever" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/07/【docker】部署第一个应用doclever/"
+    >【docker】部署第一个应用doclever</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/07/【docker】部署第一个应用doclever/" class="article-date">
+  <time datetime="2020-05-06T16:43:22.000Z" itemprop="datePublished">2020-05-07</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <script src="/assets/js/APlayer.min.js"> </script><p><a href="https://github.com/sx1989827/DOClever/tree/master/docker" target="_blank" rel="noopener">doclever 开源接口管理平台的 github 地址</a></p>
+<p>为了方便部署和使用，我们使用 docker-compose</p>
+<p>用法：</p>
+<p>① 在文件夹下创建<code>docker-compose.yml</code>，填入以下内容</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">version: &quot;2&quot;</span><br><span class="line">services:</span><br><span class="line">  DOClever:</span><br><span class="line">    image: lw96/doclever</span><br><span class="line">    restart: always</span><br><span class="line">    container_name: &quot;DOClever&quot;</span><br><span class="line">    ports:</span><br><span class="line">    - 20080:10000</span><br><span class="line">    volumes:</span><br><span class="line">    - /svr/doclever/file:/root/DOClever/data/file</span><br><span class="line">    - /svr/doclever/img:/root/DOClever/data/img</span><br><span class="line">    - /svr/doclever/tmp:/root/DOClever/data/tmp</span><br><span class="line">    environment:</span><br><span class="line">    - DB_HOST=mongodb://mongo:27017/DOClever</span><br><span class="line">    - PORT=10000</span><br><span class="line">    links:</span><br><span class="line">    - mongo:mongo</span><br><span class="line"></span><br><span class="line">  mongo:</span><br><span class="line">    image: mongo:latest</span><br><span class="line">    restart: always</span><br><span class="line">    container_name: &quot;mongodb&quot;</span><br><span class="line">    volumes:</span><br><span class="line">    - /svr/doclever/db:/data/db</span><br></pre></td></tr></table></figure>
+<p>② 运行 <code>docker-compose up -d</code></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="【docker】部署文档管理平台version:-2" class="article article-type-【docker】部署文档管理平台version:" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/07/2/"
+    >2</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/07/2/" class="article-date">
+  <time datetime="2020-05-06T16:41:41.000Z" itemprop="datePublished">2020-05-07</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <script src="/assets/js/APlayer.min.js"> </script>
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-【docker】centos安装docker和docker-compose" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/07/【docker】centos安装docker和docker-compose/"
+    >【docker】centos安装docker和docker-compose</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/07/【docker】centos安装docker和docker-compose/" class="article-date">
+  <time datetime="2020-05-06T16:21:25.000Z" itemprop="datePublished">2020-05-07</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <script src="/assets/js/APlayer.min.js"> </script><p>[TOC]</p>
+<p><a href="https://docs.docker.com/engine/install/centos/" target="_blank" rel="noopener">docker 官方文档：centos 安装</a></p>
+<h2 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h2><h3 id="一、先运行卸载，确保环境安全"><a href="#一、先运行卸载，确保环境安全" class="headerlink" title="一、先运行卸载，确保环境安全"></a>一、先运行卸载，确保环境安全</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo yum remove docker \</span><br><span class="line">                  docker-client \</span><br><span class="line">                  docker-client-latest \</span><br><span class="line">                  docker-common \</span><br><span class="line">                  docker-latest \</span><br><span class="line">                  docker-latest-logrotate \</span><br><span class="line">                  docker-logrotate \</span><br><span class="line">                  docker-engine</span><br></pre></td></tr></table></figure>
+<h3 id="二、使用储存库安装"><a href="#二、使用储存库安装" class="headerlink" title="二、使用储存库安装"></a>二、使用储存库安装</h3><p>在首次在新主机上安装 Docker 引擎之前，需要设置 Docker 存储库。之后，您可以从存储库中安装和更新 Docker。</p>
+<p>设置存储库需要安装<code>yum-utils</code>包</p>
+<p>它提供了<code>yum-config-manager</code>工具，并设置稳定储存库。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install -y yum-utils</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo yum-config-manager \</span><br><span class="line">    --add-repo \</span><br><span class="line">    https://download.docker.com/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
+<h3 id="三、安装-docker"><a href="#三、安装-docker" class="headerlink" title="三、安装 docker"></a>三、安装 docker</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 安装最新版</span><br><span class="line">sudo yum install docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 安装指定版</span><br><span class="line"># 查看版本列表</span><br><span class="line">yum list docker-ce --showduplicates | sort -r</span><br><span class="line"></span><br><span class="line"># 指定版本 有些版本有冒号</span><br><span class="line"># 例如docker-ce.x86_64  3:18.09.1-3.el7</span><br><span class="line"># 应该忽略冒号之前的内容，正确示例：docker-ce-18.09.1</span><br><span class="line">sudo yum install docker-ce-&lt;VERSION_STRING&gt; docker-ce-cli-&lt;VERSION_STRING&gt; containerd.io</span><br></pre></td></tr></table></figure>
+<h3 id="四、启动-docker"><a href="#四、启动-docker" class="headerlink" title="四、启动 docker"></a>四、启动 docker</h3><blockquote>
+<p>sudo systemctl start docker</p>
+</blockquote>
+<h3 id="五、试运行-hello-world"><a href="#五、试运行-hello-world" class="headerlink" title="五、试运行 hello-world"></a>五、试运行 hello-world</h3><blockquote>
+<p>sudo docker run hello-world<br>运行成功则安装成功，且能正常使用</p>
+</blockquote>
+<h2 id="docker-compose"><a href="#docker-compose" class="headerlink" title="docker-compose"></a>docker-compose</h2><p>参考菜鸟教程：<a href="https://www.runoob.com/docker/docker-compose.html" target="_blank" rel="noopener">https://www.runoob.com/docker/docker-compose.html</a></p>
+<p>Linux 上我们可以从 Github 上下载它的二进制包来使用，最新发行的版本地址：<a href="https://github.com/docker/compose/releases。" target="_blank" rel="noopener">https://github.com/docker/compose/releases。</a></p>
+<p>运行以下命令以下载 Docker Compose 的指定版本 1.25.4，要安装其他版本的 Compose，请替换 1.24.1。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -L https://github.com/docker/compose/releases/download/1.25.4/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure>
+<p>将可执行权限应用于二进制文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure>
+<p>创建软链：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose</span><br></pre></td></tr></table></figure>
+<p>测试是否安装成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker-compose --version</span><br><span class="line"></span><br><span class="line"># 成功打印 docker-compose version 1.25.4, build 8d51620a</span><br></pre></td></tr></table></figure>
+<h3 id="配置加速地址"><a href="#配置加速地址" class="headerlink" title="配置加速地址"></a>配置加速地址</h3><p>道客云：<a href="http://get.daocloud.io/" target="_blank" rel="noopener">http://get.daocloud.io/</a></p>
+<p>道客云提供加速：<a href="https://www.daocloud.io/mirror" target="_blank" rel="noopener">https://www.daocloud.io/mirror</a></p>
+<p>运行加速配置</p>
+<blockquote>
+<p>curl -sSL <a href="https://get.daocloud.io/daotools/set_mirror.sh" target="_blank" rel="noopener">https://get.daocloud.io/daotools/set_mirror.sh</a> | sh -s <a href="http://f1361db2.m.daocloud.io" target="_blank" rel="noopener">http://f1361db2.m.daocloud.io</a></p>
+</blockquote>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/centos/">centos</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker-compose/">docker-compose</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-【HTML】参考博客" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -229,6 +684,8 @@
     <footer class="article-footer">
       
       
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li></ul>
+
 
     </footer>
 
@@ -477,383 +934,13 @@
 
 </article>
     
-    <article id="post-组件间数据传递" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2018/05/03/组件间数据传递/"
-    >组件间数据传递</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2018/05/03/组件间数据传递/" class="article-date">
-  <time datetime="2018-05-03T07:16:02.000Z" itemprop="datePublished">2018-05-03</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/vue/">vue</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h1 id="父子组件"><a href="#父子组件" class="headerlink" title="父子组件"></a>父子组件</h1><p>在一个组件内部定义另一个组件，称为父子组件<br>子组件只能在父组件内部使用<br>默认情况下，子组件无法访问父组件中的数据，每个组件实例的作用域是独立的</p>
-      
-      <a class="article-more-link" href="/2018/05/03/组件间数据传递/">阅读更多...</a>
-      
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue组件/">vue组件</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/数据传递/">数据传递</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-组件component" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2018/05/03/组件component/"
-    >组件component</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2018/05/03/组件component/" class="article-date">
-  <time datetime="2018-05-03T03:55:47.000Z" itemprop="datePublished">2018-05-03</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/vue/">vue</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>[toc]</p>
-<h2 id="什么是组件？"><a href="#什么是组件？" class="headerlink" title="什么是组件？"></a>什么是组件？</h2><p>组件（Component）是 Vue.js 最强大的功能之一。<br>组件可以扩展 HTML 元素，封装可重用的代码<br>组件是自定义元素（对象）</p>
-      
-      <a class="article-more-link" href="/2018/05/03/组件component/">阅读更多...</a>
-      
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue组件/">vue组件</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-练习：vue自定义指令" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2018/05/02/练习：vue自定义指令/"
-    >练习：vue自定义指令</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2018/05/02/练习：vue自定义指令/" class="article-date">
-  <time datetime="2018-05-02T07:57:07.000Z" itemprop="datePublished">2018-05-02</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/vue/">vue</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <p>这是很少会更新的附带完整代码的博客。<br>究其原因，有些并不复杂，但不方便总结的知识点，直接看源码更方便。<br>
-      
-      <a class="article-more-link" href="/2018/05/02/练习：vue自定义指令/">阅读更多...</a>
-      
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-CSSOM视图模式" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2018/05/02/CSSOM视图模式/"
-    >CSSOM视图模式</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2018/05/02/CSSOM视图模式/" class="article-date">
-  <time datetime="2018-05-02T05:26:18.000Z" itemprop="datePublished">2018-05-02</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/JS学习笔记/">JS学习笔记</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h1 id="CSSOM视图模块-CSSOM-View-Module"><a href="#CSSOM视图模块-CSSOM-View-Module" class="headerlink" title="CSSOM视图模块(CSSOM View Module)"></a>CSSOM视图模块(CSSOM View Module)</h1><p>它定义了一些 API，Web 开发人员使用这些 API 可以进行检查，也可以以编程方式更改文档及其内容的视觉属性</p>
-<p>包括布局框定位、视区宽度和元素滚动。</p>
-<p>以下就是一些API属性的相关内容，包括兼容性，使用，测试等。</p>
-      
-      <a class="article-more-link" href="/2018/05/02/CSSOM视图模式/">阅读更多...</a>
-      
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/浏览器视图属性/">浏览器视图属性</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/页面内元素移动和滚动/">页面内元素移动和滚动</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-vue动画与animations动画库" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2018/05/01/vue动画与animations动画库/"
-    >vue动画</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2018/05/01/vue动画与animations动画库/" class="article-date">
-  <time datetime="2018-05-01T14:32:07.000Z" itemprop="datePublished">2018-05-01</time>
-</a>
-      
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/vue/">vue</a>
-  </div>
-
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <h2 id="单元素-组件的过渡"><a href="#单元素-组件的过渡" class="headerlink" title="单元素/组件的过渡"></a>单元素/组件的过渡</h2><p>Vue 提供了 transition 的封装组件，在下列情形中，可以给任何元素和组件添加进入/离开过渡</p>
-<ul>
-<li>条件渲染 (使用 v-if)</li>
-<li>条件展示 (使用 v-show)</li>
-<li>动态组件</li>
-<li>组件根节点</li>
-</ul>
-<p>vue的动画也是使用css3实现的。<br>只是写法有些不一样，我们需要将代码嵌套在<transition>中</transition></p>
-      
-      <a class="article-more-link" href="/2018/05/01/vue动画与animations动画库/">阅读更多...</a>
-      
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue/">vue</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
   </article>
   
 
   
   <nav class="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
   </nav>
   
 </section>

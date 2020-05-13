@@ -11,7 +11,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    【HTML】参考博客 |  非黑非白の博客
+    【docker】centos安装docker和docker-compose |  非黑非白の博客
   </title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   
@@ -34,7 +34,7 @@
   <div id="app">
     <main class="content on">
       <section class="outer">
-  <article id="post-【HTML】参考博客" class="article article-type-post" itemscope
+  <article id="post-【docker】centos安装docker和docker-compose" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -42,7 +42,7 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  【HTML】参考博客
+  【docker】centos安装docker和docker-compose
 </h1>
  
 
@@ -51,8 +51,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/05/05/【HTML】参考博客/" class="article-date">
-  <time datetime="2020-05-05T13:10:39.000Z" itemprop="datePublished">2020-05-05</time>
+      <a href="/2020/05/07/【docker】centos安装docker和docker-compose/" class="article-date">
+  <time datetime="2020-05-06T16:21:25.000Z" itemprop="datePublished">2020-05-07</time>
 </a>
       
       
@@ -62,7 +62,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> post.word_count:</span>
-            <span class="post-count">541</span>
+            <span class="post-count">484</span>
         </span>
     </span>
 
@@ -96,45 +96,38 @@
       
 
       
-      <script src="/assets/js/APlayer.min.js"> </script><p>[toc]</p>
-<h2 id="一、-网页排版"><a href="#一、-网页排版" class="headerlink" title="一、 网页排版"></a>一、 网页排版</h2><p>排版标签：</p>
-<ul>
-<li><p><code>&lt;h1&gt;</code></p>
-</li>
-<li><p><code>&lt;p&gt;</code></p>
-</li>
-<li><p><code>&lt;hr /&gt;</code> 水平分割线标签</p>
-</li>
-<li><p><code>&lt;br /&gt;</code> 换行标签</p>
-</li>
-<li><p><code>&lt;div&gt;</code></p>
-</li>
-<li><p><code>&lt;span&gt;</code></p>
-</li>
-<li><p><code>&lt;pre&gt;</code> 预定义标签：原样输出内容</p>
-</li>
-</ul>
-<p>原文地址： <a href="https://github.com/qianguyihao/Web/blob/master/01-HTML/04-HTML%E6%A0%87%E7%AD%BE%EF%BC%9A%E6%8E%92%E7%89%88%E6%A0%87%E7%AD%BE.md" target="_blank" rel="noopener">HTML 标签：排版标签</a></p>
-<h2 id="二、字体与锚点链接"><a href="#二、字体与锚点链接" class="headerlink" title="二、字体与锚点链接"></a>二、字体与锚点链接</h2><p>个人简要笔记：</p>
-<h3 id="2-1-字体"><a href="#2-1-字体" class="headerlink" title="2-1.字体"></a>2-1.字体</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// b s u i 都是已经废弃的，现在用左边更语义化的标签</span><br><span class="line">strong == b // strong 粗体标签 语义: 定义重要性强调的文字</span><br><span class="line">del == s // del 中划线/删除线 语义(deleted): 定义被删除的文字</span><br><span class="line">ins == u // ins 下划线 语义(inseted): 定义插入的文字</span><br><span class="line">em == i // em 斜体 语义(emphasized): 定义强调的文字</span><br></pre></td></tr></table></figure>
-<h3 id="2-2-锚点链接"><a href="#2-2-锚点链接" class="headerlink" title="2-2.锚点链接"></a>2-2.锚点链接</h3><p>锚点链接即是通过给元素设置 id（设置标记），实现浏览器可以在链接访问网页的时候，在根据链接地址后面的<code>#id</code>参数，来自动定位到网页文档的对应位置。</p>
-<blockquote>
-<p>锚链接的作用是在本页面或者其他页面的的不同位置进行跳转。</p>
+      <script src="/assets/js/APlayer.min.js"> </script><p>[TOC]</p>
+<p><a href="https://docs.docker.com/engine/install/centos/" target="_blank" rel="noopener">docker 官方文档：centos 安装</a></p>
+<h2 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h2><h3 id="一、先运行卸载，确保环境安全"><a href="#一、先运行卸载，确保环境安全" class="headerlink" title="一、先运行卸载，确保环境安全"></a>一、先运行卸载，确保环境安全</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo yum remove docker \</span><br><span class="line">                  docker-client \</span><br><span class="line">                  docker-client-latest \</span><br><span class="line">                  docker-common \</span><br><span class="line">                  docker-latest \</span><br><span class="line">                  docker-latest-logrotate \</span><br><span class="line">                  docker-logrotate \</span><br><span class="line">                  docker-engine</span><br></pre></td></tr></table></figure>
+<h3 id="二、使用储存库安装"><a href="#二、使用储存库安装" class="headerlink" title="二、使用储存库安装"></a>二、使用储存库安装</h3><p>在首次在新主机上安装 Docker 引擎之前，需要设置 Docker 存储库。之后，您可以从存储库中安装和更新 Docker。</p>
+<p>设置存储库需要安装<code>yum-utils</code>包</p>
+<p>它提供了<code>yum-config-manager</code>工具，并设置稳定储存库。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo yum install -y yum-utils</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo yum-config-manager \</span><br><span class="line">    --add-repo \</span><br><span class="line">    https://download.docker.com/linux/centos/docker-ce.repo</span><br></pre></td></tr></table></figure>
+<h3 id="三、安装-docker"><a href="#三、安装-docker" class="headerlink" title="三、安装 docker"></a>三、安装 docker</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"># 安装最新版</span><br><span class="line">sudo yum install docker-ce docker-ce-cli containerd.io</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 安装指定版</span><br><span class="line"># 查看版本列表</span><br><span class="line">yum list docker-ce --showduplicates | sort -r</span><br><span class="line"></span><br><span class="line"># 指定版本 有些版本有冒号</span><br><span class="line"># 例如docker-ce.x86_64  3:18.09.1-3.el7</span><br><span class="line"># 应该忽略冒号之前的内容，正确示例：docker-ce-18.09.1</span><br><span class="line">sudo yum install docker-ce-&lt;VERSION_STRING&gt; docker-ce-cli-&lt;VERSION_STRING&gt; containerd.io</span><br></pre></td></tr></table></figure>
+<h3 id="四、启动-docker"><a href="#四、启动-docker" class="headerlink" title="四、启动 docker"></a>四、启动 docker</h3><blockquote>
+<p>sudo systemctl start docker</p>
 </blockquote>
-<p>比如说，在网页底部有一个向上箭头，点击箭头后回到顶部，这个就可以利用锚链接。</p>
-<p>不过锚链接没有动画，是立即跳转到对应位置。所以实际使用中，往往需要依赖别人封装好的插件。</p>
-<p>例如<code>navScroll.ja</code></p>
-<p>参考原文地址： <a href="https://github.com/qianguyihao/Web/blob/master/01-HTML/05-HTML%E6%A0%87%E7%AD%BE%EF%BC%9A%E5%AD%97%E4%BD%93%E6%A0%87%E7%AD%BE%E5%92%8C%E8%B6%85%E9%93%BE%E6%8E%A5.md" target="_blank" rel="noopener">HTML 标签：字体标签和超链接</a></p>
-<h2 id="三、图片标签"><a href="#三、图片标签" class="headerlink" title="三、图片标签"></a>三、图片标签</h2><p>主要注意 align 属性</p>
-<p>图片的 align 属性：图片和周围文字的相对位置。</p>
-<p>属性取值可以是：bottom（默认）、center、top、left、right。</p>
-<p>如果想实现图文混排的效果，请使用 align 属性，取值为 left 或 right。</p>
-<p>我们来分别看一下这 align 属性的这几个属性值的区别。</p>
-<p>1、align=””，图片和文字低端对齐。即默认情况下的显示效果</p>
-<p>2、align=”center”：图片和文字水平方向上居中对齐。 3、align=”top”：图片与文字顶端对齐。</p>
-<p>4、align=”left”：图片在文字的左边。</p>
-<p>5、align=”right”：图片在文字的右边。</p>
-<p>原文地址： <a href="https://github.com/qianguyihao/Web/blob/master/01-HTML/06-HTML%E6%A0%87%E7%AD%BE%EF%BC%9A%E5%9B%BE%E7%89%87%E6%A0%87%E7%AD%BE.md" target="_blank" rel="noopener">HTML 标签：图片标签</a></p>
+<h3 id="五、试运行-hello-world"><a href="#五、试运行-hello-world" class="headerlink" title="五、试运行 hello-world"></a>五、试运行 hello-world</h3><blockquote>
+<p>sudo docker run hello-world<br>运行成功则安装成功，且能正常使用</p>
+</blockquote>
+<h2 id="docker-compose"><a href="#docker-compose" class="headerlink" title="docker-compose"></a>docker-compose</h2><p>参考菜鸟教程：<a href="https://www.runoob.com/docker/docker-compose.html" target="_blank" rel="noopener">https://www.runoob.com/docker/docker-compose.html</a></p>
+<p>Linux 上我们可以从 Github 上下载它的二进制包来使用，最新发行的版本地址：<a href="https://github.com/docker/compose/releases。" target="_blank" rel="noopener">https://github.com/docker/compose/releases。</a></p>
+<p>运行以下命令以下载 Docker Compose 的指定版本 1.25.4，要安装其他版本的 Compose，请替换 1.24.1。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -L https://github.com/docker/compose/releases/download/1.25.4/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure>
+<p>将可执行权限应用于二进制文件：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod +x /usr/local/bin/docker-compose</span><br></pre></td></tr></table></figure>
+<p>创建软链：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ln -s /usr/local/bin/docker-compose /usr/bin/docker-compose</span><br></pre></td></tr></table></figure>
+<p>测试是否安装成功</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">docker-compose --version</span><br><span class="line"></span><br><span class="line"># 成功打印 docker-compose version 1.25.4, build 8d51620a</span><br></pre></td></tr></table></figure>
+<h3 id="配置加速地址"><a href="#配置加速地址" class="headerlink" title="配置加速地址"></a>配置加速地址</h3><p>道客云：<a href="http://get.daocloud.io/" target="_blank" rel="noopener">http://get.daocloud.io/</a></p>
+<p>道客云提供加速：<a href="https://www.daocloud.io/mirror" target="_blank" rel="noopener">https://www.daocloud.io/mirror</a></p>
+<p>运行加速配置</p>
+<blockquote>
+<p>curl -sSL <a href="https://get.daocloud.io/daotools/set_mirror.sh" target="_blank" rel="noopener">https://get.daocloud.io/daotools/set_mirror.sh</a> | sh -s <a href="http://f1361db2.m.daocloud.io" target="_blank" rel="noopener">http://f1361db2.m.daocloud.io</a></p>
+</blockquote>
 
       
       <!-- reward -->
@@ -203,14 +196,14 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://blak-kong.github.io/2020/05/05/【HTML】参考博客/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://blak-kong.github.io/2020/05/07/【docker】centos安装docker和docker-compose/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>
       
       
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/他人博客/">他人博客</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网页排版/">网页排版</a></li></ul>
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/centos/">centos</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker-compose/">docker-compose</a></li></ul>
 
 
     </footer>
@@ -221,19 +214,19 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/05/07/【docker】centos安装docker和docker-compose/" class="article-nav-link">
+      <a href="/2020/05/07/2/" class="article-nav-link">
         <strong class="article-nav-caption">上一篇</strong>
         <div class="article-nav-title">
           
-            【docker】centos安装docker和docker-compose
+            2
           
         </div>
       </a>
     
     
-      <a href="/2020/05/05/【HEXO】hexo部署到阿里云/" class="article-nav-link">
+      <a href="/2020/05/05/【HTML】参考博客/" class="article-nav-link">
         <strong class="article-nav-caption">下一篇</strong>
-        <div class="article-nav-title">【HEXO】hexo部署到阿里云</div>
+        <div class="article-nav-title">【HTML】参考博客</div>
       </a>
     
   </nav>
