@@ -16,6 +16,8 @@ tags:
 
 https://help.aliyun.com/document_detail/98728.html?spm=a2c4g.11186623.6.587.84fd392cMbk2oO
 
+<!-- more -->
+
 ## nginx 安装步骤
 
 我的 nginx 是使用 yum 安装的，所以安装目录在`/etc/nginx`

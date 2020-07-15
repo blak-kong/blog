@@ -26,6 +26,8 @@ sudo yum remove docker \
                   docker-engine
 ```
 
+<!-- more -->
+
 ### 二、使用储存库安装
 
 在首次在新主机上安装 Docker 引擎之前，需要设置 Docker 存储库。之后，您可以从存储库中安装和更新 Docker。

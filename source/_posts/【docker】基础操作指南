@@ -1,0 +1,224 @@
+---
+title: 【docker】部署第一个应用doclever
+date: 2020-06-08 17:29:00
+tags:
+tags:
+  - docker
+---
+
+[toc]
+
+# 1. 镜像 images
+
+## 1-1 下载镜像：
+>docker pull xxx
+
+## 1-2 查询镜像：
+
+查询远程
+>docker search xxx
+
+查询本地
+>docker images [NAME]
+
+(NAME 不填，则默认查看本地全部镜像)
+
+<!-- more -->
+
+## 1-3 删除镜像
+
+可能存在多个镜像 id，会报错 id 指向多个源
+
+此时可以使用名称 + 版本号
+
+>docker rmi [镜像id / 镜像名称:版本号]
+
+## 1-4 创建镜像
+
+创建镜像有两种方式
+
+- 1、从已经创建的容器中更新镜像，并且提交这个镜像
+- 2、使用 Dockerfile 指令来创建一个新的镜像
+
+### 1-4-1 使用 Dockerfile 本地打包镜像
+
+Dockerfile 是一个用来构建镜像的文本文件，文本内容包含了一条条构建镜像所需的指令和说明。
+
+Docker Dockerfile | 菜鸟教程 https://www.runoob.com/docker/docker-dockerfile.html
+
+```
+docker image build ./ -t NAME:TAG # 打包镜像
+```
+### 1-4-2 更新镜像
+
+更新镜像有两步
+
+①使用镜像创建容器
+```
+docker run -t -i ubuntu:15.10 /bin/bash
+```
+
+②提交修改，创建本地镜像
+
+```
+docker commit -m="has update" -a="runoob" e218edb10161 runoob/ubuntu:v2
+```
+各个参数说明：
+
+```
+-m: 提交的描述信息
+
+-a: 指定镜像作者
+
+e218edb10161：容器 ID
+
+runoob/ubuntu:v2: 指定要创建的目标镜像名
+```
+
+## 1-5 提交镜像到公网仓库
+
+
+# 2. 容器 container
+
+注意，容器存在语法糖。
+
+## 2-1 查看容器
+
+注意：`docker ps` 命令是 `docker container` 的语法糖
+
+```
+docker ps # 查看正在运行的容器
+docker ps -a # 查看所有容器
+
+# 以上命令等同于
+
+docker container ls # 查看正在运行的容器
+docker container ls -all # 查看所有容器
+```
+
+## 2-2 使用容器
+
+docker 容器的使用，和查看一样，使用也存在语法糖
+
+```
+docker run [options] [容器名/容器id] # 创建容器
+docker start [容器名/容器id]  # 运行运行
+docker stop [容器名/容器id] # 停止容器
+
+# 以上命令等同于
+
+docker container create [options] [容器名/容器id]
+docker container start [容器名/容器id]
+docker container stop [容器名/容器id]
+```
+
+### 2-2-1 创建容器实例
+
+```
+docker run --name [创建容器名称] -p 8081:80 -d [imageName] [可选/命令]
+```
+
+### 2-2-2 停止容器
+
+```
+docker stop [id/names] # 根据 容器id 或 容器名称
+```
+
+### 2-2-3 启动容器
+
+```
+docker start [id/names]
+```
+
+### 2-2-4 删除容器
+
+删除容器时，容器必须是停止状态
+```
+docker rm [id/names]
+```
+
+### 2-2-5 导入导出
+这部分未测试，参考菜鸟教程
+
+容器导出
+```
+docker export 1e560fca3906 > ubuntu.tar
+```
+
+容器导入
+```
+cat docker/ubuntu.tar | docker import - test/ubuntu:v1
+```
+
+### 2-2-6 其他操作
+
+查看容器日志
+```
+docker logs -f [id/names]
+```
+
+查看容器内部进程
+```
+docker top [id/names]
+```
+
+查看容器底层docker配置信息
+```
+docker inspect [id/names]
+```
+
+## 推送到远程仓库
+
+推送到远程仓库前，需要先登录。
+
+登录登出
+```
+docker login # 登录
+docker logout # 退出
+```
+
+推送：注意需要先登录docker
+```
+ docker push [name:tag] # 存在同名容器，则加上tag区分
+```
+
+设置tag
+```
+docker tag [id] [name:tag]
+```
+
+# 3. 命令
+
+ `-i` 交互式操作。
+
+ `-t` 终端。
+
+ `-d` 后台运行.
+
+`--name` runoob-nginx-test-web：将容器命名为 runoob-nginx-test-web。
+
+`--restart` 重启策略
+
+ `-d` 设置容器在在后台一直运行。
+
+ `-p` 端口进行映射，将本地 8081 端口映射到容器内部的 80 端口。
+ 
+ `-v` ~/nginx/www:/usr/share/nginx/html：将我们本地的 www 目录挂载到容器的 /usr/share/nginx/html。
+
+
+
+注：加了 `-d` 参数默认不会进入容器，想要进入容器需要使用指令 `docker exec`（下面会介绍到）。
+
+
+重启策略
+```
+restart=no，默认策略，在容器退出时不重启容器
+
+restart=on-failure，在容器非正常退出时（退出状态非0），才会重启容器
+
+restart=on-failure:3，在容器非正常退出时重启容器，最多重启3次
+
+restart=always，在容器退出时总是重启容器
+
+restart=unless-stopped，在容器退出时总是重启容器，但是不考虑在Docker守护进程启动时就已经停止了的容器
+```

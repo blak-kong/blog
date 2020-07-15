@@ -24,7 +24,9 @@ Nestjs 目前在行业内具有很高的关注度，所以我们有必要学习�
 
 GitHub: https://github.com/nestjs/nest
 
-# nest 主要是学习，国内实际使用，还是优先选 eggjs（文档第一）
+<!-- more -->
+
+nest 主要是学习，在国内实际使用，还是优先选 eggjs（文档第一）
 
 [TOC]
 

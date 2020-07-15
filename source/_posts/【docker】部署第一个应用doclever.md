@@ -2,11 +2,15 @@
 title: 【docker】部署第一个应用doclever
 date: 2020-05-07 00:43:22
 tags:
+  - docker
+  - docker-compose
 ---
 
 [doclever 开源接口管理平台的 github 地址](https://github.com/sx1989827/DOClever/tree/master/docker)
 
 为了方便部署和使用，我们使用 docker-compose
+
+<!-- more -->
 
 用法：
 
