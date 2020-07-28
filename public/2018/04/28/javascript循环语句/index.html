@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-Hans" >
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="description" content="node前端" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    javascript循环语句 |  非黑非白的博客
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  <link rel="stylesheet" href="/dist/main.css">
+  <link rel="stylesheet" href="/css/custom.css">
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+  
+
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content on">
+      <section class="outer">
+  <article id="post-javascript循环语句" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  javascript循环语句
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2018/04/28/javascript循环语句/" class="article-date">
+  <time datetime="2018-04-27T16:07:03.000Z" itemprop="datePublished">2018-04-28</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JS学习笔记/">JS学习笔记</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">2.4k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">9 分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <script src="\assets\js\APlayer.min.js"> </script><p>[TOC]</p>
+<p>学习和记录循环语句需要注意的重要细节，深入理解js的循环语句</p>
+<h2 id="for（条件循环）"><a href="#for（条件循环）" class="headerlink" title="for（条件循环）"></a>for（条件循环）</h2><p>一般for循环的语法为：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">for(语句1;语句2;语句3)&#123;</span><br><span class="line">    被执行的代码块；</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>语句 1 在循环（代码块）开始前执行<br>语句 2 定义运行循环（代码块）的条件<br>语句 3 在循环（代码块）已被执行之后执行</p>
+ <a id="more"></a>
+<p>干巴巴的说明有点无聊，不方便记忆，我们来做一道经典题型</p>
+<p>以面试题级别的题型为例：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">// 挑战一</span><br><span class="line">var k;</span><br><span class="line">for(i=0, j=0; i&lt;10, j&lt;6; i++, j++)&#123;</span><br><span class="line">    k = i + j;</span><br><span class="line">&#125;</span><br><span class="line">console.log(k);  // ？？？</span><br></pre></td></tr></table></figure>
+<p>偶不！它一次定义了很多条语句！这不是for循环！<br>等等……仔细一看，它只有三个分号。冷静，这是我们刚才学习的for循环！</p>
+<p>毕竟也没有谁规定一个语句之中，只能写一个判断，这样做是可以的。<br>那么，答案会是多少呢？</p>
+<p>一开始，i和j都等于零。<br>条件判断后，i和j都自加一。</p>
+<p>但条件判断是以谁为基准？分别循环？不可能！</p>
+<p>所幸，我们不是真的在面试，直接用浏览器运行便能一窥究竟。<br>答案是10</p>
+<p>而如果把i&lt;10 和 j&lt;6 的位置对调<br>则会输出18</p>
+<blockquote>
+<p>由此可见，for循环的条件判断<code>停止条件</code>，由最接近第二个分号的条件为准。</p>
+</blockquote>
+<ul>
+<li>顺便一提，当循环遍历一个数组，并且数组的长度在循环过程中不会改变时，我们应将数组长度用变量存储起来，这样会获得更好的效率</li>
+</ul>
+<p>例：</p>
+<blockquote>
+<p>const arr = [1, 2, 3];<br>for(let i = 0, len = arr.length; i &lt; len; i++)</p>
+</blockquote>
+<hr>
+<h2 id="for-in-遍历所有可枚举的属性"><a href="#for-in-遍历所有可枚举的属性" class="headerlink" title="for-in (遍历所有可枚举的属性)"></a>for-in (遍历所有可枚举的属性)</h2><p>for-in语句用于对数组或者对象的<code>属性</code>进行循环操作。</p>
+<p>for-in 循环中的代码每执行一次，就会对<code>数组的元素</code>或者<code>对象的属性</code>进行一次操作。</p>
+<p>Tip:</p>
+<blockquote>
+<p>for-in循环应该用在<code>非数组对象</code>的遍历上，使用for-in进行循环也被称为“枚举”。因为它真正遍历的是对象<code>“可枚举的属性”</code></p>
+</blockquote>
+<p>注意：</p>
+<blockquote>
+<p>for-in 遍历属性的顺序并不确定。<br>即输出的结果顺序与属性在对象中的顺序无关，也与属性的字母顺序无关，与其他任何顺序也无关。</p>
+</blockquote>
+<h3 id="Array-的真相"><a href="#Array-的真相" class="headerlink" title="Array 的真相"></a>Array 的真相</h3><p>Array 在 Javascript 中是一个对象， Array 的索引是属性名。</p>
+<p>事实上， Javascript 中的 “array” 有些误导性， Javascript 中的 Array 并不像大部分其他语言的数组。首先， Javascript 中的 Array 在内存上并不连续，其次， Array 的索引并不是指偏移量。</p>
+<p>实际上， Array 的索引也不是 Number 类型，而是 String 类型的。我们可以正确使用如 arr[0] 的写法的原因是语言可以自动将 Number 类型的 0 转换成 String 类型的 “0″ 。所以，在 Javascript 中从来就没有 Array 的索引，而只有类似 “0″ 、 “1″ 等等的属性。</p>
+<p>有趣的是，每个 Array 对象都有一个 length 的属性，导致其表现地更像其他语言的数组。但为什么在遍历 Array 对象的时候没有输出 length 这一条属性呢？</p>
+<p>那是因为 for-in 只能遍历“可枚举的属性”， length 属于不可枚举属性，实际上， Array 对象还有许多其他不可枚举的属性。</p>
+<p>现在我们来看看用 for-in 来循环数组的特殊例子</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">const arr = [1, 2, 3];</span><br><span class="line">arr.name = &quot;Hello world&quot;;</span><br><span class="line">let index;</span><br><span class="line">for(index in arr) &#123;</span><br><span class="line">    console.log(&quot;arr[&quot; + index + &quot;] = &quot; + arr[index]);</span><br><span class="line">&#125;</span><br><span class="line">//运行结果</span><br><span class="line">//arr[0] = 1</span><br><span class="line">//arr[1] = 2</span><br><span class="line">//arr[2] = 3</span><br><span class="line">//arr[name] = Hello world</span><br></pre></td></tr></table></figure>
+<p>我们看到 for-in 循环访问了我们新增的 “name” 属性，因为 for-in 遍历了对象的所有属性，而不仅仅是“索引”。</p>
+<p>同时需要注意的是，此处输出的索引值，即 “0″、 “1″、 “2″不是 Number 类型的，而是 String 类型的，因为其就是作为属性输出，而不是索引。</p>
+<p>那是不是说，只要我们不在 Array 对象中添加新的属性，我们就可以只输出数组中的内容了呢？答案是否定的。</p>
+<ul>
+<li>因为 for-in 不仅仅遍历 array 自身的属性，它还遍历 array 原型链上的所有可枚举的属性。</li>
+</ul>
+<p>下面我们看个例子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">Array.prototype.fatherName = &quot;Father&quot;;</span><br><span class="line">const arr = [1, 2, 3];</span><br><span class="line">arr.name = &quot;Hello world&quot;;</span><br><span class="line">let index;</span><br><span class="line">for(index in arr) &#123;</span><br><span class="line">    console.log(&quot;arr[&quot; + index + &quot;] = &quot; + arr[index]);</span><br><span class="line">&#125;</span><br><span class="line">//arr[0] = 1</span><br><span class="line">//arr[1] = 2</span><br><span class="line">//arr[2] = 3</span><br><span class="line">//arr[name] = Hello world</span><br><span class="line">//arr[fatherName] = Father</span><br></pre></td></tr></table></figure>
+<p>写到这里，我们可以发现 for-in 并不适合用来遍历 Array 中的元素，其更适合遍历对象中的属性，这也是其被创造出来的初衷。</p>
+<ul>
+<li>但是有一种情况例外，那就是稀疏数组。</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">let key;</span><br><span class="line">const arr = [];</span><br><span class="line">arr[0] = &quot;a&quot;;</span><br><span class="line">arr[100] = &quot;b&quot;;</span><br><span class="line">arr[10000] = &quot;c&quot;;</span><br><span class="line">for(key in arr) &#123;</span><br><span class="line">    if(arr.hasOwnProperty(key) &amp;&amp; </span><br><span class="line">    /^0$|^[1-9]\d*$/.test(key) &amp;&amp; </span><br><span class="line">    key &lt;= 4294967294 </span><br><span class="line">    ) &#123;</span><br><span class="line">     console.log(arr[key]);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>for-in 只会遍历存在的实体.</li>
+</ul>
+<p>上面的例子中， for-in 遍历了3次（遍历属性分别为”0″、 “100″、 “10000″的元素，而普通 for 循环则会遍历 10001 次）。<br>所以，只要处理得当， for-in 在遍历 Array 中元素也能发挥巨大作用。</p>
+<p>for-in 性能<br>正如上面所说，每次迭代操作会同时搜索实例或者原型属性， for-in 循环的每次迭代都会产生更多开销，因此要比其他循环类型慢，一般速度为其他类型循环的 1/7。<br>因此，除非明确需要迭代一个属性数量未知的对象，否则应避免使用 for-in 循环。</p>
+<p>如果需要遍历一个数量有限的已知属性列表，使用其他循环会更快，比如下面的例子：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">const obj = &#123;</span><br><span class="line"> &quot;prop1&quot;: &quot;value1&quot;,</span><br><span class="line"> &quot;prop2&quot;: &quot;value2&quot;</span><br><span class="line">&#125;;</span><br><span class="line">  </span><br><span class="line">const props = [&quot;prop1&quot;, &quot;prop2&quot;];</span><br><span class="line">for(let i = 0; i &lt; props.length; i++) &#123;</span><br><span class="line"> console.log(obj[props[i]]);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>上面代码中，将对象的属性都存入一个数组中，相对于 for-in 查找每一个属性，该代码只关注给定的属性，节省了循环的开销和时间。</p>
+<h4 id="for-in总结："><a href="#for-in总结：" class="headerlink" title="for-in总结："></a>for-in总结：</h4><p>最后来一个面试题</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var nums = [12,32,54,56,78,89];</span><br><span class="line">for(var n in nums)&#123;</span><br><span class="line">    console.log(n);  // 0,1,2,3,4,5</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>因为for-in的真正作用已经解释了很多，所以我们只需要梳理一下知识点，即可轻松解答</p>
+<p>总结：<br>①：Array实际上不存在索引（但存在类似的属性）<br>②：for-in只能遍历可枚举属性（几乎所有属性）<br>③：for-in并不直接获取数组元素（获取元素方法：数组[索引属性]）<br>④：for-in输出顺序不确定（不会自动排列）</p>
+<p>由此可得：<br>①：console.log(n)不可能输出元素<br>②：n是索引属性</p>
+<ul>
+<li>所以，Array不存在索引，但for-in遍历索引属性（普通的for循环是遍历数组长度）。</li>
+</ul>
+<p>补充：（过滤不想要的属性）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">for(var i in a) &#123;</span><br><span class="line">    // 跳过继承的属性</span><br><span class="line">    if (!a.hasOwnProperty(i)) continue; // continue结束本次循环</span><br><span class="line"></span><br><span class="line">    // 跳过不是非负整数的 i</span><br><span class="line">    if (String(Math.floor(Math.abs(Number(i)))) !== i) continue;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="forEach-遍历所有元素并回调"><a href="#forEach-遍历所有元素并回调" class="headerlink" title="forEach (遍历所有元素并回调)"></a>forEach (遍历所有元素并回调)</h2><p>在 ES5 中，引入了新的循环，即 forEach 循环。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">const arr = [1, 2, 3];</span><br><span class="line">arr.forEach((data) =&gt; &#123;</span><br><span class="line">    console.log(data);</span><br><span class="line">&#125;);</span><br><span class="line">//1</span><br><span class="line">//2</span><br><span class="line">//3</span><br></pre></td></tr></table></figure>
+<p>forEach 方法为数组中含有有效值的每一项执行一次 callback 函数。<br>那些已删除（使用 delete 方法等情况）或者从未赋值的项将被跳过（不包括那些值为 undefined 或 null 的项）。 </p>
+<p>callback 函数会被依次传入三个参数：</p>
+<p>forEach(值,索引,数组对象本身)，默认只遍历值</p>
+<ul>
+<li>数组当前项的值；</li>
+<li>数组当前项的索引；</li>
+<li>数组对象本身；</li>
+</ul>
+<p>需要注意的是，forEach 遍历的范围在第一次调用 callback 前就会确定。<br>调用forEach 后添加到数组中的项不会被 callback 访问到。</p>
+<p>如果已经存在的值被改变，则传递给 callback 的值是 forEach 遍历到他们那一刻的值。<br>已删除的项不会被遍历到。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">const arr = [];</span><br><span class="line">arr[0] = &quot;a&quot;;</span><br><span class="line">arr[3] = &quot;b&quot;;</span><br><span class="line">arr[10] = &quot;c&quot;;</span><br><span class="line">arr.name = &quot;Hello world&quot;;</span><br><span class="line">arr.forEach((data, index, array) =&gt; &#123;</span><br><span class="line">    console.log(data, index, array);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>运行结果:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a 0 [&quot;a&quot;, 3: &quot;b&quot;, 10: &quot;c&quot;, name: &quot;Hello world&quot;]</span><br><span class="line">b 3 [&quot;a&quot;, 3: &quot;b&quot;, 10: &quot;c&quot;, name: &quot;Hello world&quot;]</span><br><span class="line">c 10 [&quot;a&quot;, 3: &quot;b&quot;, 10: &quot;c&quot;, name: &quot;Hello world&quot;]</span><br></pre></td></tr></table></figure>
+<p>这里的 index 是 Number 类型，并且也不会像 for-in 一样遍历原型链上的属性。</p>
+<p>所以，使用 forEach 时，我们不需要专门地声明 index 和遍历的元素，因为这些都作为回调函数的参数。</p>
+<p>另外，forEach 将会遍历数组中的所有元素，但是 ES5 定义了一些其他有用的方法，下面是一部分：</p>
+<ul>
+<li>every: 循环在第一次 return false 后返回</li>
+<li>some: 循环在第一次 return true 后返回</li>
+<li>filter: 返回一个新的数组，该数组内的元素满足回调函数</li>
+<li>map: 将原数组中的元素处理后再返回</li>
+<li>reduce: 对数组中的元素依次处理，将上次处理结果作为下次处理的输入，最后得到最终结果。</li>
+</ul>
+<p>forEach 性能：一般<br>forEach 的速度不如 for ，因为forEach会遍历所有元素，并一一进行回调。</p>
+
+      
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong>
+              本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.lzwlook.fun/2018/04/28/javascript循环语句/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/循环语句-js/">循环语句 js</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2018/04/28/深入浅出js对象排序/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            深入理解js对象排序-sort()
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2018/04/13/ES6语法学习/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">ES6语法学习</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: '6uPG1LfUnKuMQTJj9n4beJeN-gzGzoHsz',
+        app_key: 'hIBECVGKuO5cLFYHcjVpzQWr',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'mp',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2018-2020
+        blak-kong
+      </li>
+      <li>
+        
+        Powered by
+        
+        
+        <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+        
+      </li>
+      
+      <li>
+        <a href="http://www.beian.miit.gov.cn/" target="_black">粤ICP备19140350号</a>
+      </li>
+      
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s4.cnzz.com/z_stat.php?id=1278748687&amp;web_id=1278748687'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="非黑非白的博客"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="https://github.com/blak-kong">关于我</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="https://vuepress.lzwlook.fun">技术文档</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>~~~~~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['天下古今之庸人，皆以一惰字致败；天下古今之人才，皆以一傲字致败。', '编程不同于码字，码字用心，编程用逻辑。', '有压力的时候，就要超越当下，观想「白骨观」'],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+  }
+
+</script>
+
+
+
+<script src="/js/tocbot.min.js"></script>
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+<script src="/dist/main.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+
+
+    
+  </div>
+</body>
+
+</html>

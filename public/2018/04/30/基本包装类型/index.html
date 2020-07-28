@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-Hans" >
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="description" content="node前端" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+    基本包装类型 |  非黑非白的博客
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  <link rel="stylesheet" href="/dist/main.css">
+  <link rel="stylesheet" href="/css/custom.css">
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+  
+
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content on">
+      <section class="outer">
+  <article id="post-基本包装类型" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h1 class="article-title sea-center" style="border-left:0" itemprop="name">
+  基本包装类型
+</h1>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2018/04/30/基本包装类型/" class="article-date">
+  <time datetime="2018-04-30T10:16:23.000Z" itemprop="datePublished">2018-04-30</time>
+</a>
+      
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/JS学习笔记/">JS学习笔记</a>
+  </div>
+
+      
+      
+<div class="word_count">
+    <span class="post-time">
+        <span class="post-meta-item-icon">
+            <i class="ri-quill-pen-line"></i>
+            <span class="post-meta-item-text"> 字数统计:</span>
+            <span class="post-count">1.7k</span>
+        </span>
+    </span>
+
+    <span class="post-time">
+        &nbsp; | &nbsp;
+        <span class="post-meta-item-icon">
+            <i class="ri-book-open-line"></i>
+            <span class="post-meta-item-text"> 阅读时长≈</span>
+            <span class="post-count">6 分钟</span>
+        </span>
+    </span>
+</div>
+
+      
+    </div>
+    
+
+    
+    
+    <div class="tocbot"></div>
+
+
+
+
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <script src="\assets\js\APlayer.min.js"> </script><h2 id="基本包装类型"><a href="#基本包装类型" class="headerlink" title="基本包装类型"></a>基本包装类型</h2><p>为了便于操作基本类型值，JavaScript 还提供了3个特殊的引用类型：Boolean、Number 和 String。<br>实际上，每当读取一个基本类型值的时候，后台就会创建一个对应的基本包装类型的对象，从而让我们能够调用一些方法来操作这些数据。<br>来看下面的例子。</p>
+<a id="more"></a>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var s1 = &quot;some text&quot;;</span><br><span class="line">var s2 = s1.substring(2);</span><br></pre></td></tr></table></figure>
+<p>这个例子中的变量 s1 包含一个字符串，字符串当然是基本类型值。<br>而下一行调用了 s1 的 substring() 方法，并将返回的结果保存在了 s2 中。<br>我们知道，基本类型值不是对象，因而从逻辑上讲它们不应该有方法（尽管如我们所愿，它们确实有方法）。</p>
+<!-- more -->
+<p>其实，为了让我们实现这种直观的操作，后台已经自动完成了一系列的处理。<br>当第二行代码访问 s1 时，访问过程处于一种读取模式，也就是要从内存中读取这个字符串的值。<br>而在读取模式中访问字符串时，后台都会自动完成下列处理。</p>
+<ol>
+<li>创建 String 类型的一个实例；</li>
+<li>在实例上调用指定的方法；</li>
+<li>销毁这个实例。</li>
+<li>可以将以上三个步骤想象成是执行了下列 JavaScript 代码。</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var s1 = new String(&quot;some text&quot;);</span><br><span class="line">var s2 = s1.substring(2);</span><br><span class="line">s1 = null;</span><br></pre></td></tr></table></figure>
+<p>经过此番处理，基本的字符串值就变得跟对象一样了。<br>而且，上面这三个步骤也分别适用于 Boolean 和 Number 类型对应的布尔值和数字值。</p>
+<ul>
+<li>引用类型与基本包装类型的主要区别就是对象的生存期。</li>
+</ul>
+<p>使用 new 操作符创建的引用类型的实例，在执行流离开当前作用域之前都一直保存在内存中。<br>而自动创建的基本包装类型的对象，则只存在于一行代码的执行瞬间，然后立即被销毁。</p>
+<p>（使用 new 操作符创建的String引用类型的实例，优于自动创建的基本包装类型）</p>
+<p>这意味着我们不能在运行时为基本类型值添加属性和方法。</p>
+<hr>
+<p>以下为简略概括，关于基本包装类型</p>
+<h2 id="Boolean类型"><a href="#Boolean类型" class="headerlink" title="Boolean类型"></a>Boolean类型</h2><p>任何时候，我们都不建议直接实例化Boolean类型。<br>它虽然是与布尔值对应的引用类型，但是他无法用作布尔值判断，意义不明。</p>
+<h2 id="Number类型"><a href="#Number类型" class="headerlink" title="Number类型"></a>Number类型</h2><p>大多数时候，我们不建议直接实例化Number类型，原因和Boolean类型一样，影响类型判断。<br>Number类型是与数字值对应的引用类型。要创建Number对象，可以在调用Number构造函数时，向其中传递相应的数值。</p>
+<p>例子：var numberObject = new Number(10)  // 十进制</p>
+<p>关于Number类型，我们可以进行数制转换、字符转换。</p>
+<p>但一般不建议使用，我们应该尽量使用Number对象及其方法。（需要用到时，百度即可）<br>（Number类型和Number对象是不一样的，Number对象是基本类型的实例）<br>（Number类型是与<code>数字值</code>对应的引用类型，它只是基本类型的数值的实例。）</p>
+<h2 id="String类型"><a href="#String类型" class="headerlink" title="String类型"></a>String类型</h2><p>String 类型是字符串的<code>对象包装类型</code>，可以像下面这样使用 String 构造函数来创建。</p>
+<blockquote>
+<p>var stringObject = new String(“hello world”);</p>
+</blockquote>
+<p>String 对象的方法也可以在所有基本的字符串值中访问到。<br>其中，继承的 valueOf()、toLocaleString() 和 toString() 方法，都返回对象所表示的基本字符串值。</p>
+<blockquote>
+<p>String 类型的每个实例都有一个 length 属性，表示字符串中包含多个字符。</p>
+</blockquote>
+<p>来看下面的例子。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var stringValue = &quot;hello world&quot;;</span><br><span class="line">console.log(stringValue.length);     // 11</span><br></pre></td></tr></table></figure></p>
+<p>应该注意的是，即使字符串中包含双字节字符（不是占一个字节的 ASCII 字符），每个字符也仍然算一个字符。<br>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var stringValue = &quot;大家好&quot;;</span><br><span class="line">console.log(stringValue.length);     // 3</span><br></pre></td></tr></table></figure>
+<p>String 类型提供了很多方法，用于辅助完成对 JavaScript 中字符串的解析和操作。</p>
+<p><a href="https://github.com/stone0090/javascript-lessons/tree/master/1.11-PrimitiveWrapperObjects" target="_blank" rel="noopener">方法</a></p>
+<h4 id="字符方法"><a href="#字符方法" class="headerlink" title="字符方法"></a>字符方法</h4><h5 id="访问字符串中特定位置的字符：charAt-和-charCodeAt"><a href="#访问字符串中特定位置的字符：charAt-和-charCodeAt" class="headerlink" title="访问字符串中特定位置的字符：charAt() 和 charCodeAt()"></a>访问字符串中特定位置的字符：charAt() 和 charCodeAt()</h5><p>这两个方法都接收一个参数，即基于0的字符位置。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var stringValue = &quot;hello world&quot;;</span><br><span class="line">console.log(stringValue.charAt(1));  // &quot;e&quot;</span><br></pre></td></tr></table></figure>
+<p>charAt(): 以单字符字符串的形式返回给定位置的那个字符<br>charCodeAt(): 返回字符编码</p>
+<p>ECMAScript 5 还定义了另一个访问个别字符的方法。<br>在支持浏览器中，可以使用方括号加数字索引来访问字符串中的特定字符。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var stringValue = &quot;hello world&quot;;</span><br><span class="line">console.log(stringValue[1]);   // &quot;e&quot;</span><br></pre></td></tr></table></figure></p>
+<h4 id="字符串操作方法"><a href="#字符串操作方法" class="headerlink" title="字符串操作方法"></a>字符串操作方法</h4><h5 id="concat-用于将一或多个字符串拼接起来"><a href="#concat-用于将一或多个字符串拼接起来" class="headerlink" title="concat() 用于将一或多个字符串拼接起来"></a><code>concat()</code> 用于将一或多个字符串拼接起来</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var stringValue = &quot;hello &quot;;</span><br><span class="line">var result = stringValue.concat(&quot;world&quot;, &quot;!&quot;);</span><br><span class="line"></span><br><span class="line">console.log(result);        // &quot;hello world!&quot;</span><br><span class="line">console.log(stringValue);   // &quot;hello&quot;</span><br></pre></td></tr></table></figure>
+<p>基于子字符串创建新字符串的方法：slice()、substr() 和 substring()<br>slice(start,end) 从已有的<code>数组</code>中返回选定的元素。<br>substr(start,length) 在<code>字符串</code>中抽取从 start 下标开始的指定数目的字符。<br>substring(start,stop) 提取<code>字符串</code>中介于两个指定下标之间的字符。</p>
+<h4 id="字符串位置方法"><a href="#字符串位置方法" class="headerlink" title="字符串位置方法"></a>字符串位置方法</h4><p>从字符串中查找子字符串的方法：indexOf() 和 lastIndexOf()<br>这两个方法都接收两个参数：要<code>查找的项</code>和（可选的）<code>查找起点位置的索引</code></p>
+<p>indexOf() 返回某个指定的字符串值在字符串中首次出现的位置。<br>lastIndexOf() 返回一个指定的字符串值最后出现的位置。</p>
+<p>前面学过，indexOf()查找时会判断是否全等，详情氪查看js循环的笔记。</p>
+<blockquote>
+<p>它们在比较第一个参数与数组中的每一项时，会使用全等操作符；</p>
+</blockquote>
+<h4 id="trim-方法–清除前后空格"><a href="#trim-方法–清除前后空格" class="headerlink" title="trim() 方法–清除前后空格"></a>trim() 方法–清除前后空格</h4><p>这个方法会创建一个字符串的副本，删除前置及后缀的所有空格，然后返回结果。</p>
+<h4 id="字符串大小写转换方法"><a href="#字符串大小写转换方法" class="headerlink" title="字符串大小写转换方法"></a>字符串大小写转换方法</h4><p>toLowerCase() 和 toUpperCase()</p>
+<p>小写和大写</p>
+<h4 id="字符串的模式匹配方法"><a href="#字符串的模式匹配方法" class="headerlink" title="字符串的模式匹配方法"></a>字符串的模式匹配方法</h4><p><code>replace()</code> 在字符串中用一些字符替换另一些字符，或替换一个与正则表达式匹配的子串。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var str=&quot;a blue and a blue car&quot;;</span><br><span class="line">var n=str.replace(/blue/g,&quot;red&quot;); // a red and a red car</span><br></pre></td></tr></table></figure></p>
+<p><code>split()</code> 用于把一个字符串分割成字符串数组。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&quot;2:3:4:5&quot;.split(&quot;:&quot;)	//将返回[&quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;]</span><br><span class="line">&quot;|a|b|c&quot;.split(&quot;|&quot;)	    //将返回[&quot;&quot;, &quot;a&quot;, &quot;b&quot;, &quot;c&quot;]</span><br></pre></td></tr></table></figure></p>
+<h4 id="localeCompare-方法–比较两个字符串"><a href="#localeCompare-方法–比较两个字符串" class="headerlink" title="localeCompare() 方法–比较两个字符串"></a>localeCompare() 方法–比较两个字符串</h4><h4 id="fromCharCode-方法–接收一或多个字符编码，然后将它们转换成一个字符串。"><a href="#fromCharCode-方法–接收一或多个字符编码，然后将它们转换成一个字符串。" class="headerlink" title="fromCharCode() 方法–接收一或多个字符编码，然后将它们转换成一个字符串。"></a>fromCharCode() 方法–接收一或多个字符编码，然后将它们转换成一个字符串。</h4>
+      
+      <!-- reward -->
+      
+      <div id="reward-btn">
+        打赏
+      </div>
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+        <div class="declare">
+          <ul class="post-copyright">
+            <li>
+              <i class="ri-copyright-line"></i>
+              <strong>版权声明： </strong>
+              本博客所有文章除特别声明外，著作权归作者所有。转载请注明出处！
+            </li>
+          </ul>
+        </div>
+        
+    <footer class="article-footer">
+      
+          
+<div class="share-btn">
+      <span class="share-sns share-outer">
+        <i class="ri-share-forward-line"></i>
+        分享
+      </span>
+      <div class="share-wrap">
+        <i class="arrow"></i>
+        <div class="share-icons">
+          
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="ri-weibo-fill"></i>
+          </a>
+          <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="ri-wechat-fill"></i>
+          </a>
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="ri-qq-fill"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="ri-douban-line"></i>
+          </a>
+          <!-- <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a> -->
+          
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="ri-facebook-circle-fill"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="ri-twitter-fill"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="ri-google-fill"></i>
+          </a>
+        </div>
+      </div>
+</div>
+
+<div class="wx-share-modal">
+    <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://www.lzwlook.fun/2018/04/30/基本包装类型/" alt="微信分享二维码">
+    </div>
+</div>
+
+<div id="share-mask"></div>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/基本包装类型-js/">基本包装类型 js</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+  
+  <nav class="article-nav">
+    
+      <a href="/2018/05/01/js面向对象（原型链）/" class="article-nav-link">
+        <strong class="article-nav-caption">上一篇</strong>
+        <div class="article-nav-title">
+          
+            js面向对象（原型链）
+          
+        </div>
+      </a>
+    
+    
+      <a href="/2018/04/30/js函数理解/" class="article-nav-link">
+        <strong class="article-nav-caption">下一篇</strong>
+        <div class="article-nav-title">js函数理解</div>
+      </a>
+    
+  </nav>
+
+
+  
+
+  
+  
+<!-- valine评论 -->
+<div id="vcomments-box">
+    <div id="vcomments">
+    </div>
+</div>
+<script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+<script src='https://cdn.jsdelivr.net/npm/valine@1.3.10/dist/Valine.min.js'></script>
+<script>
+    new Valine({
+        el: '#vcomments',
+        app_id: '6uPG1LfUnKuMQTJj9n4beJeN-gzGzoHsz',
+        app_key: 'hIBECVGKuO5cLFYHcjVpzQWr',
+        path: window.location.pathname,
+        notify: 'false',
+        verify: 'false',
+        avatar: 'mp',
+        placeholder: '给我的文章加点评论吧~',
+        recordIP: true
+    });
+    const infoEle = document.querySelector('#vcomments .info');
+    if (infoEle && infoEle.childNodes && infoEle.childNodes.length > 0) {
+        infoEle.childNodes.forEach(function (item) {
+            item.parentNode.removeChild(item);
+        });
+    }
+</script>
+<style>
+    #vcomments-box {
+        padding: 5px 30px;
+    }
+
+    @media screen and (max-width: 800px) {
+        #vcomments-box {
+            padding: 5px 0px;
+        }
+    }
+
+    #vcomments-box #vcomments {
+        background-color: #fff;
+    }
+
+    .v .vlist .vcard .vh {
+        padding-right: 20px;
+    }
+
+    .v .vlist .vcard {
+        padding-left: 10px;
+    }
+</style>
+
+  
+
+  
+  
+  
+
+</article>
+</section>
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2018-2020
+        blak-kong
+      </li>
+      <li>
+        
+        Powered by
+        
+        
+        <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+        
+      </li>
+      
+      <li>
+        <a href="http://www.beian.miit.gov.cn/" target="_black">粤ICP备19140350号</a>
+      </li>
+      
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s4.cnzz.com/z_stat.php?id=1278748687&amp;web_id=1278748687'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="非黑非白的博客"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="https://github.com/blak-kong">关于我</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="https://vuepress.lzwlook.fun">技术文档</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>~~~~~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['天下古今之庸人，皆以一惰字致败；天下古今之人才，皆以一傲字致败。', '编程不同于码字，码字用心，编程用逻辑。', '有压力的时候，就要超越当下，观想「白骨观」'],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+  }
+
+</script>
+
+
+
+<script src="/js/tocbot.min.js"></script>
+<script>
+  // Tocbot_v4.7.0  http://tscanlin.github.io/tocbot/
+  tocbot.init({
+    tocSelector: '.tocbot',
+    contentSelector: '.article-entry',
+    headingSelector: 'h1, h2, h3, h4, h5, h6',
+    hasInnerContainers: true,
+    scrollSmooth: true,
+    scrollContainer: 'main',
+    positionFixedSelector: '.tocbot',
+    positionFixedClass: 'is-position-fixed',
+    fixedSidebarOffset: 'auto'
+  });
+</script>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+<script src="/dist/main.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+
+
+    
+  </div>
+</body>
+
+</html>

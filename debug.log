@@ -1,0 +1,138 @@
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Hexo version: \u001b[35m3.7.0\u001b[39m","time":"2020-07-15T04:15:59.446Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Working directory: \u001b[35mD:\\web-demo\\blog\\blak-kong.github.io\\\u001b[39m","time":"2020-07-15T04:15:59.448Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Config loaded: \u001b[35mD:\\web-demo\\blog\\blak-kong.github.io\\_config.yml\u001b[39m","time":"2020-07-15T04:15:59.695Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-generator-archive\u001b[39m","time":"2020-07-15T04:15:59.736Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-generator-category\u001b[39m","time":"2020-07-15T04:15:59.741Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-generator-feed\u001b[39m","time":"2020-07-15T04:15:59.748Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-generator-index\u001b[39m","time":"2020-07-15T04:15:59.755Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-generator-tag\u001b[39m","time":"2020-07-15T04:15:59.758Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-generator-searchdb\u001b[39m","time":"2020-07-15T04:15:59.770Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-renderer-ejs\u001b[39m","time":"2020-07-15T04:15:59.777Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-renderer-marked\u001b[39m","time":"2020-07-15T04:15:59.787Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-renderer-stylus\u001b[39m","time":"2020-07-15T04:15:59.790Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-server\u001b[39m","time":"2020-07-15T04:15:59.972Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-tag-aplayer\u001b[39m","time":"2020-07-15T04:16:00.508Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Plugin loaded: \u001b[35mhexo-deployer-git\u001b[39m","time":"2020-07-15T04:16:00.571Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Script loaded: \u001b[35mthemes\\ayer\\scripts\\default_config.js\u001b[39m","time":"2020-07-15T04:16:00.576Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Script loaded: \u001b[35mthemes\\ayer\\scripts\\filters\\index.js\u001b[39m","time":"2020-07-15T04:16:00.580Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Script loaded: \u001b[35mthemes\\ayer\\scripts\\filters\\meta_generator.js\u001b[39m","time":"2020-07-15T04:16:00.585Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Script loaded: \u001b[35mthemes\\ayer\\scripts\\helpers\\ayer-plus-vendors.js\u001b[39m","time":"2020-07-15T04:16:00.586Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Script loaded: \u001b[35mthemes\\ayer\\scripts\\helpers\\wordcount.js\u001b[39m","time":"2020-07-15T04:16:00.588Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Script loaded: \u001b[35mthemes\\ayer\\scripts\\lib\\core.js\u001b[39m","time":"2020-07-15T04:16:00.589Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Loading database.","time":"2020-07-15T04:16:00.688Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":30,"msg":"Start processing","time":"2020-07-15T04:16:00.826Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35mcategories/index.md\u001b[39m","time":"2020-07-15T04:16:00.905Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35m_posts/CSSOM视图模式.md\u001b[39m","time":"2020-07-15T04:16:00.906Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35m_posts/ES6语法学习.md\u001b[39m","time":"2020-07-15T04:16:00.906Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35m_posts/ajax学习.md\u001b[39m","time":"2020-07-15T04:16:00.907Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35m_posts/css布局思路.md\u001b[39m","time":"2020-07-15T04:16:00.912Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35m_posts/javascript循环语句.md\u001b[39m","time":"2020-07-15T04:16:00.913Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35m_posts/js对象理解.md\u001b[39m","time":"2020-07-15T04:16:00.913Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35m_posts/js函数理解.md\u001b[39m","time":"2020-07-15T04:16:00.914Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35m_posts/js面向对象（原型链）.md\u001b[39m","time":"2020-07-15T04:16:00.914Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35m_posts/module替代scopet.md\u001b[39m","time":"2020-07-15T04:16:00.915Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35m_posts/node+mongoodb学习(一).md\u001b[39m","time":"2020-07-15T04:16:00.916Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35m_posts/sass使用之mixin.md\u001b[39m","time":"2020-07-15T04:16:00.916Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35m_posts/vue动画与animations动画库.md\u001b[39m","time":"2020-07-15T04:16:00.916Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35m_posts/js数组方法.md\u001b[39m","time":"2020-07-15T04:16:00.917Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35m_posts/vue的实例属性和方法.md\u001b[39m","time":"2020-07-15T04:16:00.917Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35m_posts/vue生命周期和计算属性.md\u001b[39m","time":"2020-07-15T04:16:00.917Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35m_posts/【HEXO】hexo部署到阿里云.md\u001b[39m","time":"2020-07-15T04:16:00.918Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35m_posts/vue自定义指定.md\u001b[39m","time":"2020-07-15T04:16:00.918Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35m_posts/【HTML】排版.md\u001b[39m","time":"2020-07-15T04:16:00.919Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35m_posts/【docker】centos安装docker和docker-compose.md\u001b[39m","time":"2020-07-15T04:16:00.919Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35m_posts/【HTTPS】阿里云配置https.md\u001b[39m","time":"2020-07-15T04:16:00.920Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35m_posts/【docker】部署第一个应用doclever.md\u001b[39m","time":"2020-07-15T04:16:00.920Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35m_posts/【docker】基础操作指南\u001b[39m","time":"2020-07-15T04:16:00.920Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35m_posts/【java】安装idea和jdk.md\u001b[39m","time":"2020-07-15T04:16:00.921Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35m_posts/【nestjs】创建nestjs项目.md\u001b[39m","time":"2020-07-15T04:16:00.921Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35m_posts/【nestjs】控制器和路由.md\u001b[39m","time":"2020-07-15T04:16:00.921Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35m_posts/【jest】单元测试入门.md\u001b[39m","time":"2020-07-15T04:16:00.922Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35m_posts/【jenkins】centos7安装jenkins.md\u001b[39m","time":"2020-07-15T04:16:00.922Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35m_posts/深入浅出js对象排序.md\u001b[39m","time":"2020-07-15T04:16:00.922Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35m_posts/组件component.md\u001b[39m","time":"2020-07-15T04:16:00.922Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35m_posts/基本包装类型.md\u001b[39m","time":"2020-07-15T04:16:00.923Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35m_posts/练习：vue自定义指令.md\u001b[39m","time":"2020-07-15T04:16:00.923Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35m_posts/组件间数据传递.md\u001b[39m","time":"2020-07-15T04:16:00.923Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35mtags/index.md\u001b[39m","time":"2020-07-15T04:16:00.924Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35msource/404.html\u001b[39m","time":"2020-07-15T04:16:00.938Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35msource/favicon.ico\u001b[39m","time":"2020-07-15T04:16:00.938Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Theme config loaded.","time":"2020-07-15T04:16:00.964Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35m_config.yml\u001b[39m","time":"2020-07-15T04:16:00.966Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35msource/css/custom.styl\u001b[39m","time":"2020-07-15T04:16:00.967Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35msource/dist/main.js\u001b[39m","time":"2020-07-15T04:16:00.971Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35msource/images/ayer-side.svg\u001b[39m","time":"2020-07-15T04:16:00.972Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35msource/images/ayer.svg\u001b[39m","time":"2020-07-15T04:16:00.973Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35msource/images/ayer.png\u001b[39m","time":"2020-07-15T04:16:00.973Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35msource/images/cover7.jpg\u001b[39m","time":"2020-07-15T04:16:00.974Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35msource/images/forkme.png\u001b[39m","time":"2020-07-15T04:16:00.974Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35msource/js/clickLove.js\u001b[39m","time":"2020-07-15T04:16:00.974Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35msource/js/busuanzi-2.3.pure.min.js\u001b[39m","time":"2020-07-15T04:16:00.975Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35msource/js/lazyload.min.js\u001b[39m","time":"2020-07-15T04:16:00.975Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35msource/js/pace.min.js\u001b[39m","time":"2020-07-15T04:16:00.976Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35msource/js/search.js\u001b[39m","time":"2020-07-15T04:16:00.976Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35msource/js/tocbot.min.js\u001b[39m","time":"2020-07-15T04:16:00.976Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35msource/dist/main.css\u001b[39m","time":"2020-07-15T04:16:00.982Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35msource/images/404.jpg\u001b[39m","time":"2020-07-15T04:16:00.982Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35msource/images/cover2.jpg\u001b[39m","time":"2020-07-15T04:16:00.983Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35msource/images/sponsor.jpg\u001b[39m","time":"2020-07-15T04:16:00.983Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35msource/js/jquery-2.0.3.min.js\u001b[39m","time":"2020-07-15T04:16:00.984Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35mlayout/archive.ejs\u001b[39m","time":"2020-07-15T04:16:00.992Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35mlayout/categories.ejs\u001b[39m","time":"2020-07-15T04:16:00.993Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35mlayout/index.ejs\u001b[39m","time":"2020-07-15T04:16:00.993Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35mlayout/layout.ejs\u001b[39m","time":"2020-07-15T04:16:00.994Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35mlayout/page.ejs\u001b[39m","time":"2020-07-15T04:16:00.994Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35mlayout/post.ejs\u001b[39m","time":"2020-07-15T04:16:00.994Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35mlayout/tags.ejs\u001b[39m","time":"2020-07-15T04:16:00.995Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35mlanguages/zh-CN.yml\u001b[39m","time":"2020-07-15T04:16:01.000Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35msource/images/cover6.jpg\u001b[39m","time":"2020-07-15T04:16:01.001Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35mlayout/_partial/archive-post.ejs\u001b[39m","time":"2020-07-15T04:16:01.010Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35mlayout/_partial/article.ejs\u001b[39m","time":"2020-07-15T04:16:01.011Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35mlayout/_partial/archive.ejs\u001b[39m","time":"2020-07-15T04:16:01.011Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35mlayout/_partial/ayer.ejs\u001b[39m","time":"2020-07-15T04:16:01.012Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35mlayout/_partial/after-footer.ejs\u001b[39m","time":"2020-07-15T04:16:01.012Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35mlayout/_partial/baidu-analytics.ejs\u001b[39m","time":"2020-07-15T04:16:01.013Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35mlayout/_partial/footer.ejs\u001b[39m","time":"2020-07-15T04:16:01.016Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35mlayout/_partial/google-analytics.ejs\u001b[39m","time":"2020-07-15T04:16:01.017Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35mlayout/_partial/head.ejs\u001b[39m","time":"2020-07-15T04:16:01.017Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35mlayout/_partial/modal.ejs\u001b[39m","time":"2020-07-15T04:16:01.018Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35mlayout/_partial/katex.ejs\u001b[39m","time":"2020-07-15T04:16:01.018Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35mlayout/_partial/mathjax.ejs\u001b[39m","time":"2020-07-15T04:16:01.018Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35mlayout/_partial/music.ejs\u001b[39m","time":"2020-07-15T04:16:01.019Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35mlayout/_partial/sidebar.ejs\u001b[39m","time":"2020-07-15T04:16:01.019Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35mlayout/_partial/viewer.ejs\u001b[39m","time":"2020-07-15T04:16:01.019Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35mlayout/_partial/totop.ejs\u001b[39m","time":"2020-07-15T04:16:01.019Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35msource/images/cover1.jpg\u001b[39m","time":"2020-07-15T04:16:01.020Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35msource/images/cover3.jpg\u001b[39m","time":"2020-07-15T04:16:01.023Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35mlayout/_partial/post/albums.ejs\u001b[39m","time":"2020-07-15T04:16:01.027Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35mlayout/_partial/post/busuanzi.ejs\u001b[39m","time":"2020-07-15T04:16:01.028Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35mlayout/_partial/post/date.ejs\u001b[39m","time":"2020-07-15T04:16:01.028Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35mlayout/_partial/post/category.ejs\u001b[39m","time":"2020-07-15T04:16:01.029Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35mlayout/_partial/post/gallery.ejs\u001b[39m","time":"2020-07-15T04:16:01.035Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35mlayout/_partial/post/gitalk.ejs\u001b[39m","time":"2020-07-15T04:16:01.035Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35mlayout/_partial/post/justifiedGallery.ejs\u001b[39m","time":"2020-07-15T04:16:01.036Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35mlayout/_partial/post/nav.ejs\u001b[39m","time":"2020-07-15T04:16:01.036Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35mlayout/_partial/post/search.ejs\u001b[39m","time":"2020-07-15T04:16:01.036Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35mlayout/_partial/post/tag.ejs\u001b[39m","time":"2020-07-15T04:16:01.037Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35mlayout/_partial/post/share.ejs\u001b[39m","time":"2020-07-15T04:16:01.037Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35mlayout/_partial/post/valine.ejs\u001b[39m","time":"2020-07-15T04:16:01.037Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35mlayout/_partial/post/tocbot.ejs\u001b[39m","time":"2020-07-15T04:16:01.038Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35mlayout/_partial/post/title.ejs\u001b[39m","time":"2020-07-15T04:16:01.038Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35mlayout/_partial/post/topping.ejs\u001b[39m","time":"2020-07-15T04:16:01.038Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35mlayout/_partial/post/word.ejs\u001b[39m","time":"2020-07-15T04:16:01.039Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35msource/images/cover4.jpg\u001b[39m","time":"2020-07-15T04:16:01.041Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Processed: \u001b[35msource/images/cover5.jpg\u001b[39m","time":"2020-07-15T04:16:01.049Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Generator: \u001b[35mpage\u001b[39m","time":"2020-07-15T04:16:01.351Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Generator: \u001b[35mpost\u001b[39m","time":"2020-07-15T04:16:01.351Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Generator: \u001b[35marchive\u001b[39m","time":"2020-07-15T04:16:01.352Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Generator: \u001b[35mcategory\u001b[39m","time":"2020-07-15T04:16:01.352Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Generator: \u001b[35mfeed\u001b[39m","time":"2020-07-15T04:16:01.353Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Generator: \u001b[35mindex\u001b[39m","time":"2020-07-15T04:16:01.356Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Generator: \u001b[35mtag\u001b[39m","time":"2020-07-15T04:16:01.357Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Generator: \u001b[35mxml\u001b[39m","time":"2020-07-15T04:16:01.357Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Generator: \u001b[35mAPlayer.min.js\u001b[39m","time":"2020-07-15T04:16:01.358Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Generator: \u001b[35masset\u001b[39m","time":"2020-07-15T04:16:01.359Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":30,"msg":"Hexo is running at \u001b[4mhttp://localhost:4000/\u001b[24m. Press Ctrl+C to stop.","time":"2020-07-15T04:16:01.431Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Database saved","time":"2020-07-15T04:16:01.448Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":30,"msg":"Good bye","time":"2020-07-15T04:16:05.911Z","v":0}
+{"name":"hexo","hostname":"BANBAN","pid":15372,"level":20,"msg":"Database saved","time":"2020-07-15T04:16:05.930Z","v":0}

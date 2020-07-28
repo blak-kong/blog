@@ -1,0 +1,1125 @@
+<!DOCTYPE html>
+
+
+<html lang="zh-Hans" >
+
+
+<head>
+  <meta charset="utf-8" />
+    
+  <meta name="description" content="node前端" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>
+     非黑非白的博客
+  </title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  
+  <link rel="shortcut icon" href="/favicon.ico" />
+  
+  <link rel="stylesheet" href="/dist/main.css">
+  <link rel="stylesheet" href="/css/custom.css">
+  
+  <script src="https://cdn.jsdelivr.net/npm/pace-js@1.0.2/pace.min.js"></script>
+  
+  
+
+  
+
+</head>
+
+</html>
+
+<body>
+  <div id="app">
+    <main class="content on">
+      
+<section class="cover">
+    
+      
+      <a class="forkMe" href="https://github.com/blak-kong"
+        target="_blank"><img width="149" height="149" src="/images/forkme.png"
+          class="attachment-full size-full" alt="Fork me on GitHub" data-recalc-dims="1"></a>
+    
+  <div class="cover-frame">
+    <div class="bg-box">
+      <img src="/images/cover1.jpg" alt="image frame" />
+    </div>
+    <div class="cover-inner text-center text-white">
+      <h1><a href="/">非黑非白的博客</a></h1>
+      <div id="subtitle-box">
+        
+        <span id="subtitle"></span>
+        
+      </div>
+      <div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="cover-learn-more">
+    <a href="javascript:void(0)" class="anchor"><i class="ri-arrow-down-line"></i></a>
+  </div>
+</section>
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.11/lib/typed.min.js"></script>
+
+<div id="main">
+  <section class="outer">
+  <article class="articles">
+    
+    
+    
+    
+    <article id="post-【Github】Github Actions持续集成" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/07/24/【Github】Github Actions持续集成/"
+    >【Github】Github Actions持续集成</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/07/24/【Github】Github Actions持续集成/" class="article-date">
+  <time datetime="2020-07-23T16:05:52.000Z" itemprop="datePublished">2020-07-24</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <script src="\assets\js\APlayer.min.js"> </script><p>2020/7/23 在掘金看到一篇用 github 打造个人简历的文章，骚操作顿时令我惊为天人。没忍住，在待业期间不务正业，花了一天时间各种踩坑，最后经过整理，有了这篇文章。</p>
+<p>但这篇文章也并不是教程，最好的教程仍旧是官方文档，本文主要是起到一个抛砖引玉的作用！简单聊聊自己是如何学习使用的！</p>
+<p>对于Github Actions 持续集成的整体介绍、学习范围、能达成的目标，这最重要的入门阶段，推荐阮一峰的教程：</p>
+<p>GitHub Actions 入门教程 - 阮一峰的网络日志 <a href="http://www.ruanyifeng.com/blog/2019/09/getting-started-with-github-actions.html" target="_blank" rel="noopener">http://www.ruanyifeng.com/blog/2019/09/getting-started-with-github-actions.html</a></p>
+<h2 id="Github-Actions-如何开始使用？"><a href="#Github-Actions-如何开始使用？" class="headerlink" title="Github Actions 如何开始使用？"></a>Github Actions 如何开始使用？</h2><p>即便已经看过入门教程，并提交 demo 完成了体验。对于一些初级、或者没有后端经验的同学，仍旧可能是懵逼状态。</p>
+<p>因为经验上的问题，仅仅使用可能无法充分的理解部分操作流程背后的设计思想。</p>
+<p>同时由于<strong>知识的诅咒（当一个人知道一件事后，他就无法想象自己是不知道这件事的）</strong>，注定了知识在传播的过程中，总是存在着一定的信息差。</p>
+<p>试图完全抹平这份差距是愚蠢的。例如 shell 脚本，部分初级的同学可能甚至没有了解过，就会比较难受，但也并不是无法学习使用。</p>
+<h2 id="actions"><a href="#actions" class="headerlink" title="actions"></a>actions</h2><h3 id="1-1-什么是-actions？"><a href="#1-1-什么是-actions？" class="headerlink" title="1-1 什么是 actions？"></a>1-1 什么是 actions？</h3><p>actions：是一个定义好的工作流脚本。开发者们可以把一段脚本的工作流抽象出来，形成动作（action）。开源到GitHub后，这段脚本就会如同组件一般，可以在自己的工作流中引入，直接进行配置、使用。</p>
+<h3 id="1-2-如何合理高效的检索-使用-actions？"><a href="#1-2-如何合理高效的检索-使用-actions？" class="headerlink" title="1-2 如何合理高效的检索/使用 actions？"></a>1-2 如何合理高效的检索/使用 actions？</h3><p>GitHub 做了一个官方的 actions 插件市场，入口为 Github 首页顶部栏的 marketplace（市场），通过它可以搜索到他人提交的 action。</p>
+<p>另外，还有一个 <a href="https://github.com/sdras/awesome-actions" target="_blank" rel="noopener">sdras/awesome-actions</a> 的仓库，可以找到很多优秀 action。</p>
+<p>sdras 是vuejs的核心团队成员，我们可以根据各自需要，直接学习使用她分类整理的 actions 索引列表。</p>
+<p>对于不同 action 的使用，我们进入对应的仓库，都会有使用示例。</p>
+<h3 id="1-3-我是有极客精神的精神小伙，我能创建自己的-action-脚本吗？"><a href="#1-3-我是有极客精神的精神小伙，我能创建自己的-action-脚本吗？" class="headerlink" title="1-3 我是有极客精神的精神小伙，我能创建自己的 action 脚本吗？"></a>1-3 我是有极客精神的精神小伙，我能创建自己的 action 脚本吗？</h3><p>当然可以！</p>
+<p>GitHub Actions 有中文文档，根据需求，我们可以去细读文档。</p>
+<p>如 <a href="https://docs.github.com/cn/actions/creating-actions" target="_blank" rel="noopener">Github Actions 创建操作</a>，官方有提供创建 javascript 脚本和 docker 脚本的教程。</p>
+<p>实际上我们也可以创建其他语言的脚本，例如python。 </p>
+<h4 id="示例：javascript创建脚本"><a href="#示例：javascript创建脚本" class="headerlink" title="示例：javascript创建脚本"></a>示例：javascript创建脚本</h4><p>创建一个可以打印<code>hello world</code>的action <a href="https://github.com/blak-kong/hello-world-javascript-action.git" target="_blank" rel="noopener">hello-world-javascript-action</a></p>
+<p><strong>1. actions.yml 脚本，定义工作流。</strong></p>
+<p>该脚本可以通过who-to-greet，输入一个变量</p>
+<figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">name:</span> <span class="string">'Hello World'</span> <span class="comment"># name 定义工作流的名称</span></span><br><span class="line"><span class="attr">description:</span> <span class="string">'Greet someone and record the time'</span> <span class="comment"># 对该工作流要完成的任务进行简单的描述.</span></span><br><span class="line"><span class="attr">inputs:</span> <span class="comment"># 输入类</span></span><br><span class="line">  <span class="attr">who-to-greet:</span>  <span class="comment"># 变量 id of output</span></span><br><span class="line">    <span class="attr">description:</span> <span class="string">'测试输入描述'</span></span><br><span class="line">    <span class="attr">required:</span> <span class="literal">true</span>   <span class="comment"># 必须存在</span></span><br><span class="line">    <span class="attr">default:</span> <span class="string">'World'</span> <span class="comment"># 默认值</span></span><br><span class="line"><span class="attr">outputs:</span> <span class="comment"># 输出类</span></span><br><span class="line">  <span class="attr">time:</span> <span class="comment"># 变量 id of output</span></span><br><span class="line">    <span class="attr">description:</span> <span class="string">'测试输出描述'</span></span><br><span class="line"><span class="attr">runs:</span> <span class="comment"># 运行</span></span><br><span class="line">  <span class="attr">using:</span> <span class="string">'node12'</span> <span class="comment"># 使用 node12 运行</span></span><br><span class="line">  <span class="attr">main:</span> <span class="string">'index.js'</span> <span class="comment"># 运行入口</span></span><br></pre></td></tr></table></figure>
+<p><strong>2. 脚本运行具体操作。</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> core = <span class="built_in">require</span>(<span class="string">'@actions/core'</span>);</span><br><span class="line"><span class="keyword">const</span> github = <span class="built_in">require</span>(<span class="string">'@actions/github'</span>);</span><br><span class="line"></span><br><span class="line"><span class="keyword">try</span> &#123;</span><br><span class="line">  <span class="comment">// `who-to-greet` input defined in action metadata file</span></span><br><span class="line">  <span class="comment">// 获取 action.yml 中 input 类 定义的变量</span></span><br><span class="line">  <span class="keyword">const</span> nameToGreet = core.getInput(<span class="string">'who-to-greet'</span>);</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Hello <span class="subst">$&#123;nameToGreet&#125;</span>!`</span>);</span><br><span class="line">  <span class="keyword">const</span> time = (<span class="keyword">new</span> <span class="built_in">Date</span>()).toTimeString();</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 输出 action.yml 中 output 类 定义的变量</span></span><br><span class="line">  core.setOutput(<span class="string">"time"</span>, time);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="comment">// Get the JSON webhook payload for the event that triggered the workflow</span></span><br><span class="line">  <span class="comment">// 触发工作流完成钩子</span></span><br><span class="line">  <span class="keyword">const</span> payload = <span class="built_in">JSON</span>.stringify(github.context.payload, <span class="literal">undefined</span>, <span class="number">2</span>)</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`The event payload: <span class="subst">$&#123;payload&#125;</span>`</span>);</span><br><span class="line">&#125; <span class="keyword">catch</span> (error) &#123;</span><br><span class="line">  core.setFailed(error.message); <span class="comment">// 报错</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>3. workflow（持续集成运行一次，就是一个工作流程）</strong><br><figure class="highlight yml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">on:</span> <span class="string">[push]</span> <span class="comment"># push 操作执行自动化</span></span><br><span class="line"></span><br><span class="line"><span class="attr">jobs:</span> <span class="comment"># 任务</span></span><br><span class="line">  <span class="attr">hello_world_job:</span></span><br><span class="line">    <span class="attr">runs-on:</span> <span class="string">ubuntu-latest</span></span><br><span class="line">    <span class="attr">name:</span> <span class="string">A</span> <span class="string">job</span> <span class="string">to</span> <span class="string">say</span> <span class="string">hello</span></span><br><span class="line">    <span class="attr">steps:</span></span><br><span class="line">      <span class="comment"># 要使用此仓库的私有操作，必须检出仓库（未发布的actions，需要用actions/checkout）</span></span><br><span class="line">      <span class="comment"># 此操作会重新拉取仓库</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Checkout</span></span><br><span class="line">      <span class="attr">uses:</span> <span class="string">actions/checkout@v2</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">Hello</span> <span class="string">world</span> <span class="string">action</span> <span class="string">step</span></span><br><span class="line">      <span class="attr">id:</span> <span class="string">hello123</span></span><br><span class="line">      <span class="comment"># uses: actions/hello-world-javascript-action@v1</span></span><br><span class="line">      <span class="attr">uses:</span> <span class="string">./</span> <span class="comment"># 引入使用自定义的脚本,相对路径为私有操作，非第三方引用</span></span><br><span class="line">      <span class="attr">with:</span></span><br><span class="line">        <span class="attr">who-to-greet:</span> <span class="string">'测试'</span></span><br><span class="line">    <span class="comment"># Use the output from the `hello` step</span></span><br><span class="line">    <span class="bullet">-</span> <span class="attr">name:</span> <span class="string">获取输出时间</span></span><br><span class="line">      <span class="attr">run:</span> <span class="string">echo</span> <span class="string">"时间是 $<span class="template-variable">&#123;&#123; steps.hello123.outputs.time &#125;&#125;</span>"</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>运行结果</strong></p>
+<p><a href="https://imgchr.com/i/UvsCAf" target="_blank" rel="noopener"><img src="https://s1.ax1x.com/2020/07/24/UvsCAf.png" alt="运行结果"></a></p>
+<h2 id="具体使用"><a href="#具体使用" class="headerlink" title="具体使用"></a>具体使用</h2><p>GitHub Actions 有一些自己的术语。</p>
+<p>（1）workflow （工作流程）：持续集成一次运行的过程，就是一个 workflow。</p>
+<p>（2）job （任务）：一个 workflow 由一个或多个 jobs 构成，含义是一次持续集成的运行，可以完成多个任务。</p>
+<p>（3）step（步骤）：每个 job 由多个 step 构成，一步步完成。</p>
+<p>（4）action （动作）：每个 step 可以依次执行一个或多个命令（action）。</p>
+<p>对于需要加密的环境变量，以及在工作流中使用docker镜像，此类具体用法应该查看官方文档。</p>
+<p>配置和管理工作流程 - GitHub Docs  <a href="https://docs.github.com/cn/actions/configuring-and-managing-workflows" target="_blank" rel="noopener">https://docs.github.com/cn/actions/configuring-and-managing-workflows</a></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github/">Github</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Github-Actions/">Github Actions</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-【java】安装idea和jdk" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/29/【java】安装idea和jdk/"
+    >【java】安装idea和jdk</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/29/【java】安装idea和jdk/" class="article-date">
+  <time datetime="2020-05-29T11:06:24.000Z" itemprop="datePublished">2020-05-29</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>[toc]</p>
+<h2 id="下载最新的-IDEA-2020-1"><a href="#下载最新的-IDEA-2020-1" class="headerlink" title="下载最新的 IDEA 2020.1"></a>下载最新的 IDEA 2020.1</h2><p>其实也可以从老版本直接升级，这里为了照顾大部分人可能第一次安装，我们选择从官网下载，下载地址为:</p>
+<p><a href="https://www.jetbrains.com/idea/download/" target="_blank" rel="noopener">https://www.jetbrains.com/idea/download/</a></p>
+<p>点击下载，静待下载完成~</p>
+      
+      <a class="article-more-link" href="/2020/05/29/【java】安装idea和jdk/">阅读更多...</a>
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-【jenkins】centos7安装jenkins" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/29/【jenkins】centos7安装jenkins/"
+    >【jenkins】centos7安装jenkins</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/29/【jenkins】centos7安装jenkins/" class="article-date">
+  <time datetime="2020-05-28T17:16:45.000Z" itemprop="datePublished">2020-05-29</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>[toc]</p>
+<h1 id="1-准备工作-linux-环境"><a href="#1-准备工作-linux-环境" class="headerlink" title="1.准备工作/linux 环境"></a>1.准备工作/linux 环境</h1><h2 id="1-1-配置-yum-源"><a href="#1-1-配置-yum-源" class="headerlink" title="1-1 配置 yum 源"></a>1-1 配置 yum 源</h2><p>不建议使用 CentOS 7 自带的 yum 源，因为安装软件和依赖时会非常慢甚至超时失败。这里，我们使用阿里云的源予以替换，执行如下命令，替换文件</p>
+<p><code>/etc/yum.repos.d/CentOS-Base.repo</code></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget -O /etc/yum.repos.d/CentOS-Base.repo http://mirrors.aliyun.com/repo/Centos-7.repo</span><br><span class="line"></span><br><span class="line">yum makecache</span><br></pre></td></tr></table></figure>
+      
+      <a class="article-more-link" href="/2020/05/29/【jenkins】centos7安装jenkins/">阅读更多...</a>
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/k8s/">k8s</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程笔记/">教程笔记</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-【jest】单元测试入门" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/27/【jest】单元测试入门/"
+    >【jest】单元测试入门</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/27/【jest】单元测试入门/" class="article-date">
+  <time datetime="2020-05-27T08:17:42.000Z" itemprop="datePublished">2020-05-27</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <script src="\assets\js\APlayer.min.js"> </script>
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-【nestjs】控制器和路由" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/14/【nestjs】控制器和路由/"
+    >【nestjs】控制器和路由</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/14/【nestjs】控制器和路由/" class="article-date">
+  <time datetime="2020-05-13T17:23:08.000Z" itemprop="datePublished">2020-05-14</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>[TOC]</p>
+<h2 id="一、NestJS-中的控制器"><a href="#一、NestJS-中的控制器" class="headerlink" title="一、NestJS 中的控制器"></a>一、NestJS 中的控制器</h2><p>Nest 中的控制器层负责处理传入的请求, 并返回对客户端的响应。</p>
+<p>控制器的目的是接收应用的特定请求。</p>
+<p>路由机制控制哪个控制器接收哪些请求。</p>
+<p>通常， 每个控制器有多个路由，不同的路由可以执行不同的操作。</p>
+<blockquote>
+<p>ps：express、koa 需要引入 router 中间件。而 nestjs 自己做了封装，可以直接使用控制器做路由。</p>
+</blockquote>
+<p>可以通过 NestCLi 创建控制器：</p>
+<blockquote>
+<p>nest g controller [控制器名字]</p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">// 补充：查看nest g 提供的所有方法</span><br><span class="line">nest g -help</span><br></pre></td></tr></table></figure>
+      
+      <a class="article-more-link" href="/2020/05/14/【nestjs】控制器和路由/">阅读更多...</a>
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nestjs/">nestjs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程笔记/">教程笔记</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-【nestjs】创建nestjs项目" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/14/【nestjs】创建nestjs项目/"
+    >【nestjs】创建nestjs项目</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/14/【nestjs】创建nestjs项目/" class="article-date">
+  <time datetime="2020-05-13T17:22:27.000Z" itemprop="datePublished">2020-05-14</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>Nest 是一个渐进的 Node.js 框架，可以在 TypeScript 和 JavaScript (ES6、ES7、ES8)之上构 建高效、可伸缩的企业级服务器端应用程序。</p>
+<p>Nest 基于 TypeScript 编写并且结合了 OOP（面向对象编程），FP（函数式编程）和 FRP （函数式响应编程）的相关理念。在设计上的很多灵感来自于 Angular，Angular 的很多模 式又来自于 Java 中的 Spring 框架，依赖注入、面向切面编程等，所以我们也可以认为： Nest 是 Node.js 版的 Spring 框架。</p>
+<p>Nest 框架底层 HTTP 平台默认是基于 Express 实现的，所以无需担心第三方库的缺失。</p>
+<p>Nest 旨在成为一个与平台无关的框架。 通过平台，可以创建可重用的逻辑部件，开发人员可以利用这些部件来跨越多种不同类型的应用程序。</p>
+<p>从技术上讲，Nest 可以在创建适配器 后使用任何 Node HTTP 框架。 有两个支持开箱即用的 HTTP 平台：express 和 fastify。 您 可以选择最适合您需求的产品。 NestJs 的核心思想：就是提供了一个层与层直接的耦合度极小,抽象化极高的一个架构 体系。</p>
+<p>Nestjs 目前在行业内具有很高的关注度，所以我们有必要学习一下</p>
+<p>官网：<a href="https://nestjs.com/" target="_blank" rel="noopener">https://nestjs.com/</a></p>
+<p>中文网站：<a href="https://docs.nestjs.cn/" target="_blank" rel="noopener">https://docs.nestjs.cn/</a></p>
+<p>GitHub: <a href="https://github.com/nestjs/nest" target="_blank" rel="noopener">https://github.com/nestjs/nest</a></p>
+      
+      <a class="article-more-link" href="/2020/05/14/【nestjs】创建nestjs项目/">阅读更多...</a>
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nestjs/">nestjs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/教程笔记/">教程笔记</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-【docker】部署第一个应用doclever" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/07/【docker】部署第一个应用doclever/"
+    >【docker】部署第一个应用doclever</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/07/【docker】部署第一个应用doclever/" class="article-date">
+  <time datetime="2020-05-06T16:43:22.000Z" itemprop="datePublished">2020-05-07</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p><a href="https://github.com/sx1989827/DOClever/tree/master/docker" target="_blank" rel="noopener">doclever 开源接口管理平台的 github 地址</a></p>
+<p>为了方便部署和使用，我们使用 docker-compose</p>
+      
+      <a class="article-more-link" href="/2020/05/07/【docker】部署第一个应用doclever/">阅读更多...</a>
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker-compose/">docker-compose</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-【docker】centos安装docker和docker-compose" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/07/【docker】centos安装docker和docker-compose/"
+    >【docker】centos安装docker和docker-compose</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/07/【docker】centos安装docker和docker-compose/" class="article-date">
+  <time datetime="2020-05-06T16:21:25.000Z" itemprop="datePublished">2020-05-07</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>[TOC]</p>
+<p><a href="https://docs.docker.com/engine/install/centos/" target="_blank" rel="noopener">docker 官方文档：centos 安装</a></p>
+<h2 id="docker"><a href="#docker" class="headerlink" title="docker"></a>docker</h2><h3 id="一、先运行卸载，确保环境安全"><a href="#一、先运行卸载，确保环境安全" class="headerlink" title="一、先运行卸载，确保环境安全"></a>一、先运行卸载，确保环境安全</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">sudo yum remove docker \</span><br><span class="line">                  docker-client \</span><br><span class="line">                  docker-client-latest \</span><br><span class="line">                  docker-common \</span><br><span class="line">                  docker-latest \</span><br><span class="line">                  docker-latest-logrotate \</span><br><span class="line">                  docker-logrotate \</span><br><span class="line">                  docker-engine</span><br></pre></td></tr></table></figure>
+      
+      <a class="article-more-link" href="/2020/05/07/【docker】centos安装docker和docker-compose/">阅读更多...</a>
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/centos/">centos</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker/">docker</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/docker-compose/">docker-compose</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-【HTML】排版" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/05/【HTML】排版/"
+    >【HTML】排版</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/05/【HTML】排版/" class="article-date">
+  <time datetime="2020-05-05T13:10:39.000Z" itemprop="datePublished">2020-05-05</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <p>[toc]</p>
+<h2 id="一、-网页排版"><a href="#一、-网页排版" class="headerlink" title="一、 网页排版"></a>一、 网页排版</h2><p>排版标签：</p>
+<ul>
+<li><p><code>&lt;h1&gt;</code></p>
+</li>
+<li><p><code>&lt;p&gt;</code></p>
+</li>
+<li><p><code>&lt;hr /&gt;</code> 水平分割线标签</p>
+</li>
+<li><p><code>&lt;br /&gt;</code> 换行标签</p>
+</li>
+<li><p><code>&lt;div&gt;</code></p>
+</li>
+<li><p><code>&lt;span&gt;</code></p>
+</li>
+<li><p><code>&lt;pre&gt;</code> 预定义标签：原样输出内容</p>
+</li>
+</ul>
+<p>原文地址： <a href="https://github.com/qianguyihao/Web/blob/master/01-HTML/04-HTML%E6%A0%87%E7%AD%BE%EF%BC%9A%E6%8E%92%E7%89%88%E6%A0%87%E7%AD%BE.md" target="_blank" rel="noopener">HTML 标签：排版标签</a></p>
+      
+      <a class="article-more-link" href="/2020/05/05/【HTML】排版/">阅读更多...</a>
+      
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/他人博客/">他人博客</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网页排版/">网页排版</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+    <article id="post-【HEXO】hexo部署到阿里云" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/05/05/【HEXO】hexo部署到阿里云/"
+    >【HEXO】hexo部署到阿里云</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/05/05/【HEXO】hexo部署到阿里云/" class="article-date">
+  <time datetime="2020-05-05T13:02:54.000Z" itemprop="datePublished">2020-05-05</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <script src="\assets\js\APlayer.min.js"> </script><p>从零搭建 Hexo 博客并部署阿里云服务器（奶妈级教学）_运维_Object 的博客-CSDN 博客 <a href="https://blog.csdn.net/NoCortY/article/details/99631249" target="_blank" rel="noopener">https://blog.csdn.net/NoCortY/article/details/99631249</a></p>
+<p>有一个修改文件权限的坑，不了解 linux，卡了几小时。</p>
+<p>如果遇到了，参考下面这篇文章，chmod 这一步改成 777 即可</p>
+<p>chmod 修改文件权限 777 和 754_运维_pythonw 的博客-CSDN 博客 <a href="https://blog.csdn.net/pythonw/article/details/80263428" target="_blank" rel="noopener">https://blog.csdn.net/pythonw/article/details/80263428</a></p>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li></ul>
+
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
+  </article>
+  
+
+  
+  <nav class="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+  </nav>
+  
+</section>
+</div>
+
+      <footer class="footer">
+  <div class="outer">
+    <ul class="list-inline">
+      <li>
+        &copy;
+        2018-2020
+        blak-kong
+      </li>
+      <li>
+        
+        Powered by
+        
+        
+        <a href="https://hexo.io" target="_blank">Hexo</a> Theme <a href="https://github.com/Shen-Yu/hexo-theme-ayer" target="_blank">Ayer</a>
+        
+      </li>
+    </ul>
+    <ul class="list-inline">
+      <li>
+        
+        
+        <span>
+  <i>PV:<span id="busuanzi_value_page_pv"></span></i>
+  <i>UV:<span id="busuanzi_value_site_uv"></span></i>
+</span>
+        
+      </li>
+      
+      <li>
+        <a href="http://www.beian.miit.gov.cn/" target="_black">粤ICP备19140350号</a>
+      </li>
+      
+      <li>
+        <!-- cnzz统计 -->
+        
+        <script type="text/javascript" src='https://s4.cnzz.com/z_stat.php?id=1278748687&amp;web_id=1278748687'></script>
+        
+      </li>
+    </ul>
+  </div>
+</footer>
+      <div class="float_btns">
+        <div class="totop" id="totop">
+  <i class="ri-arrow-up-line"></i>
+</div>
+
+<div class="todark" id="todark">
+  <i class="ri-moon-line"></i>
+</div>
+
+      </div>
+    </main>
+    <aside class="sidebar on">
+      <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+  <div class="logo">
+    <a href="/"><img src="/images/ayer-side.svg" alt="非黑非白的博客"></a>
+  </div>
+  
+  <ul class="nav nav-main">
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/">主页</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/archives">归档</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/categories">分类</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="/tags">标签</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="https://github.com/blak-kong">关于我</a>
+    </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link" href="https://vuepress.lzwlook.fun">技术文档</a>
+    </li>
+    
+  </ul>
+</nav>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      
+      <a class="nav-item-link nav-item-search"  title="搜索">
+        <i class="ri-search-line"></i>
+      </a>
+      
+      
+      <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+        <i class="ri-rss-line"></i>
+      </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+    </aside>
+    <script>
+      if (window.matchMedia("(max-width: 768px)").matches) {
+        document.querySelector('.content').classList.remove('on');
+        document.querySelector('.sidebar').classList.remove('on');
+      }
+    </script>
+    <div id="mask"></div>
+
+<!-- #reward -->
+<div id="reward">
+  <span class="close"><i class="ri-close-line"></i></span>
+  <p class="reward-p"><i class="ri-cup-line"></i>~~~~~</p>
+  <div class="reward-box">
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/alipay.jpg">
+      <span class="reward-type">支付宝</span>
+    </div>
+    
+    
+    <div class="reward-item">
+      <img class="reward-img" src="/images/wechat.jpg">
+      <span class="reward-type">微信</span>
+    </div>
+    
+  </div>
+</div>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/lazyload.min.js"></script>
+
+<script>
+  try {
+    var typed = new Typed("#subtitle", {
+      strings: ['天下古今之庸人，皆以一惰字致败；天下古今之人才，皆以一傲字致败。', '编程不同于码字，码字用心，编程用逻辑。', '有压力的时候，就要超越当下，观想「白骨观」'],
+      startDelay: 0,
+      typeSpeed: 200,
+      loop: true,
+      backSpeed: 100,
+      showCursor: true
+    });
+  } catch (err) {
+  }
+
+</script>
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery-modal@0.9.2/jquery.modal.min.css">
+<script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.7.0/dist/js/jquery.justifiedGallery.min.js"></script>
+<script src="/dist/main.js"></script>
+
+
+<!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css">
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"></script>
+
+<script>
+    function viewer_init() {
+        let pswpElement = document.querySelectorAll('.pswp')[0];
+        let $imgArr = document.querySelectorAll(('.article-entry img:not(.reward-img)'))
+
+        $imgArr.forEach(($em, i) => {
+            $em.onclick = () => {
+                // slider展开状态
+                // todo: 这样不好，后面改成状态
+                if (document.querySelector('.left-col.show')) return
+                let items = []
+                $imgArr.forEach(($em2, i2) => {
+                    let img = $em2.getAttribute('data-idx', i2)
+                    let src = $em2.getAttribute('data-target') || $em2.getAttribute('src')
+                    let title = $em2.getAttribute('alt')
+                    // 获得原图尺寸
+                    const image = new Image()
+                    image.src = src
+                    items.push({
+                        src: src,
+                        w: image.width || $em2.width,
+                        h: image.height || $em2.height,
+                        title: title
+                    })
+                })
+                var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+                    index: parseInt(i)
+                });
+                gallery.init()
+            }
+        })
+    }
+    viewer_init()
+</script>
+
+
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+<script type="text/javascript" src="https://js.users.51.la/20544303.js"></script>
+
+
+    
+  </div>
+</body>
+
+</html>

@@ -3,7 +3,7 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 非黑非白の博客
+title: 非黑非白的博客
 subtitle: 重学前端,记录笔记
 description: node前端
 keywords:
@@ -13,7 +13,7 @@ timezone:
 
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
-url: http://blak-kong.github.io
+url: https://www.lzwlook.fun
 root: /
 permalink: :year/:month/:day/:title/
 permalink_defaults:
@@ -72,6 +72,8 @@ pagination_dir: page
 
 # Extensions
 ## Plugins: https://hexo.io/plugins/
+plugins:
+  hexo-generator-feed
 
 ## Themes: https://hexo.io/themes/
 theme: ayer
@@ -84,6 +86,13 @@ search:
   field: post
   format: html
   limit: 10000
+
+#订阅RSS
+feed:
+  type: atom
+  path: atom.xml
+  limit: false
+  
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
