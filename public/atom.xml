@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://www.lzwlook.fun/"/>
-  <updated>2020-07-24T15:35:26.851Z</updated>
+  <updated>2020-08-04T06:42:33.722Z</updated>
   <id>https://www.lzwlook.fun/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>【npm】node-sass下载失败问题</title>
+    <link href="https://www.lzwlook.fun/2020/08/04/%E3%80%90npm%E3%80%91node-sass%E4%B8%8B%E8%BD%BD%E5%A4%B1%E8%B4%A5%E9%97%AE%E9%A2%98/"/>
+    <id>https://www.lzwlook.fun/2020/08/04/【npm】node-sass下载失败问题/</id>
+    <published>2020-08-04T06:33:51.000Z</published>
+    <updated>2020-08-04T06:42:33.722Z</updated>
+    
+    <content type="html"><![CDATA[<script src="\assets\js\APlayer.min.js"> </script><p>node-sass 因为一些历史原因，对 node 的版本有要求，必须要<a href="mailto:`node@8.x" target="_blank" rel="noopener">`node@8.x</a>`以下才可以安装。</p><p>但平时我们不可能为了一个 npm 包，频繁切换 node 版本，尽管有 nvm 版本管理工具。</p><p>特别是在用到自动化平台，需要在云端进行打包工作的时候。</p><p>为了从手动操作中解放出来，其实我们可以使用<code>.npmrc</code> 配置文件对 <code>npm</code> 进行配置。</p><p>通过<code>.npmrc</code> ，我们可以通过观察报错信息，指定依赖包的下载地址。</p><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>指定phantomjs下载地址</span><br><span class="line">phantomjs_cdnurl=http://cnpmjs.org/downloads</span><br><span class="line"><span class="meta">#</span>指定node-sass下载地址</span><br><span class="line">sass_binary_site=https://npm.taobao.org/mirrors/node-sass/</span><br><span class="line"><span class="meta">#</span>指定chromedriver下载地址</span><br><span class="line">chromedriver_cdnurl=http://cdn.npm.taobao.org/dist/chromedriver</span><br><span class="line"><span class="meta">#</span>镜像源</span><br><span class="line">registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      
+      
+        &lt;script src=&quot;\assets\js\APlayer.min.js&quot;&gt; &lt;/script&gt;&lt;p&gt;node-sass 因为一些历史原因，对 node 的版本有要求，必须要&lt;a href=&quot;mailto:`node@8.x&quot; target=&quot;_blank&quot; rel=&quot;noo
+      
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>【Github】Github Actions持续集成</title>

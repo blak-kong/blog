@@ -73,6 +73,75 @@
     
     
     
+    <article id="post-【npm】node-sass下载失败问题" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2020/08/04/【npm】node-sass下载失败问题/"
+    >【npm】node-sass下载失败问题</a> 
+</h2>
+ 
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/08/04/【npm】node-sass下载失败问题/" class="article-date">
+  <time datetime="2020-08-04T06:33:51.000Z" itemprop="datePublished">2020-08-04</time>
+</a>
+      
+      
+      
+      
+    </div>
+    
+
+    
+
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+      
+
+      
+      <script src="\assets\js\APlayer.min.js"> </script><p>node-sass 因为一些历史原因，对 node 的版本有要求，必须要<a href="mailto:`node@8.x" target="_blank" rel="noopener">`node@8.x</a>`以下才可以安装。</p>
+<p>但平时我们不可能为了一个 npm 包，频繁切换 node 版本，尽管有 nvm 版本管理工具。</p>
+<p>特别是在用到自动化平台，需要在云端进行打包工作的时候。</p>
+<p>为了从手动操作中解放出来，其实我们可以使用<code>.npmrc</code> 配置文件对 <code>npm</code> 进行配置。</p>
+<p>通过<code>.npmrc</code> ，我们可以通过观察报错信息，指定依赖包的下载地址。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#</span>指定phantomjs下载地址</span><br><span class="line">phantomjs_cdnurl=http://cnpmjs.org/downloads</span><br><span class="line"><span class="meta">#</span>指定node-sass下载地址</span><br><span class="line">sass_binary_site=https://npm.taobao.org/mirrors/node-sass/</span><br><span class="line"><span class="meta">#</span>指定chromedriver下载地址</span><br><span class="line">chromedriver_cdnurl=http://cdn.npm.taobao.org/dist/chromedriver</span><br><span class="line"><span class="meta">#</span>镜像源</span><br><span class="line">registry=https://registry.npm.taobao.org</span><br></pre></td></tr></table></figure>
+
+      
+      <!-- reward -->
+      
+    </div>
+    
+    
+      <!-- copyright -->
+      
+    <footer class="article-footer">
+      
+      
+
+    </footer>
+
+  </div>
+
+  
+
+  
+  
+  
+
+  
+
+</article>
+    
     <article id="post-【Github】Github Actions持续集成" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -739,75 +808,6 @@
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/他人博客/">他人博客</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网页排版/">网页排版</a></li></ul>
-
-
-    </footer>
-
-  </div>
-
-  
-
-  
-  
-  
-
-  
-
-</article>
-    
-    <article id="post-【HEXO】hexo部署到阿里云" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-       
-<h2 itemprop="name">
-  <a class="article-title" href="/2020/05/05/【HEXO】hexo部署到阿里云/"
-    >【HEXO】hexo部署到阿里云</a> 
-</h2>
- 
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/05/05/【HEXO】hexo部署到阿里云/" class="article-date">
-  <time datetime="2020-05-05T13:02:54.000Z" itemprop="datePublished">2020-05-05</time>
-</a>
-      
-      
-      
-      
-    </div>
-    
-
-    
-
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-      
-
-      
-      <script src="\assets\js\APlayer.min.js"> </script><p>从零搭建 Hexo 博客并部署阿里云服务器（奶妈级教学）_运维_Object 的博客-CSDN 博客 <a href="https://blog.csdn.net/NoCortY/article/details/99631249" target="_blank" rel="noopener">https://blog.csdn.net/NoCortY/article/details/99631249</a></p>
-<p>有一个修改文件权限的坑，不了解 linux，卡了几小时。</p>
-<p>如果遇到了，参考下面这篇文章，chmod 这一步改成 777 即可</p>
-<p>chmod 修改文件权限 777 和 754_运维_pythonw 的博客-CSDN 博客 <a href="https://blog.csdn.net/pythonw/article/details/80263428" target="_blank" rel="noopener">https://blog.csdn.net/pythonw/article/details/80263428</a></p>
-
-      
-      <!-- reward -->
-      
-    </div>
-    
-    
-      <!-- copyright -->
-      
-    <footer class="article-footer">
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/nginx/">nginx</a></li></ul>
 
 
     </footer>
